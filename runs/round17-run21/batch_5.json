@@ -1,0 +1,133 @@
+{
+  "batch_index": 5,
+  "process_issues": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 AI 生成的代码结构冗长，要求将 DB 持久化逻辑抽取为独立方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 中异常类型判断硬编码为固定类型，用户指出应支持可配置",
+      "quote": "支持可配置"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 未明确打标存储位置，用户指出应在物流单扩展信息的履约计划扩展标签中新增",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 将打标和通知 service_task 描述为独立步骤，用户指出两个操作应放入同一 redo 重试流程保证一致性",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 将 plan 通知 service_task 的方式写为 RPC 接口调用，用户修正为 MQ 消息",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 中 trans 服务职责描述为处理出餐慢标签，用户修正为新增履约原子能力打标场景",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 未明确 MQ 消息体内容，用户补充传递物流单id和城市id",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "spec.md 中 service_task 原子能力描述不准确，用户明确为在 service_capability 中补充加速后 eta 奖励时间变更为骑手考核时间能力",
+      "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "业务规则",
+      "description": "平台配送订单号取值优先级：先判断 getExternalOrderId 是否有值，无值时取 packageView.externalOrderId；非平台配送直接从 packageView 取 externalOrderId",
+      "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId"
+    },
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "数据模型",
+      "description": "平台配送链路的 ugcupactid 字段路径为 orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId",
+      "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "业务规则",
+      "description": "异常上报审核通过后的异常类型匹配应支持可配置规则，而非硬编码过大/过重和出餐慢",
+      "quote": "支持可配置"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "数据模型",
+      "description": "骑手标记标签存储在物流单扩展信息的履约计划扩展标签字段中",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "业务规则",
+      "description": "打履约计划标签和发送 MQ 通知 service_task 两个操作需放入同一 redo 重试流程保证一致性",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "plan 通知 service_task 履约需求修改的通信方式为 MQ 消息，非 RPC 接口调用",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "plan 发送给 service_task 的 MQ 消息体传递物流单 id 和城市 id",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "业务规则",
+      "description": "service_task 收到出餐慢通知后在 service_capability 原子能力中补充「加速后 eta 奖励时间变更为骑手考核时间(scheduled_eta_ctrl)」能力",
+      "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "trans 服务的职责是新增履约原子能力打标场景，而非直接处理出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES 索引中 company_customer_id 字段当前不存在，需要新写入",
+      "quote": "ES字段是要新写的，字段名是company_customer_id"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "技术栈",
+      "description": "ConfigCenter 配置项 config_key_delivery_type_switch 的生产环境值为 1",
+      "quote": "config_key_delivery_type_switch值是1"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES 索引中 biz_line_key 字段当前不存在，需要新增",
+      "quote": "biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "系统架构",
+      "description": "AuthVerifyIface 通过 proxy 方式注入",
+      "quote": "通过proxy注入即可"
+    }
+  ]
+}

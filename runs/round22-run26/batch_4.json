@@ -1,0 +1,37 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "2758021373",
+      "category": "spec4.tasks",
+      "description": "spec4 tasks 产出中错误地为 getForceBacklogTime 方法添加了 cityId 参数，但该方法的调用方并无此参数",
+      "quote": "4_getForceBacklogTime为啥cityId添加"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2758021373",
+      "category": "业务规则",
+      "description": "PHF/驻点单倍率系数拦截属于纯算法侧内容，不需要工程侧处理",
+      "quote": "4.3这块儿是纯算法侧内容，不需要工程侧外处理"
+    },
+    {
+      "contentId": "2758021373",
+      "category": "接口约束",
+      "description": "出餐分位数多维度优先级覆盖顺序通过参数配置平台配置，可通过 getValueWithDimensionPriority 方法查询",
+      "quote": "这个是在参数配置平台配置好的 getValueWithDimensionPriority查看这个方法即可"
+    },
+    {
+      "contentId": "2758021373",
+      "category": "业务规则",
+      "description": "工程按城市灰度与算法按区域灰度的关系：区域包含城市，算法按区域配置由人为设定",
+      "quote": "这个人为配置 算法按区域 是按照区域的 区域是包含城市的"
+    },
+    {
+      "contentId": "syn-001",
+      "category": "系统架构",
+      "description": "CDN上传接口为内网服务，直接POST即可，不需要任何认证头",
+      "quote": "不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    }
+  ]
+}

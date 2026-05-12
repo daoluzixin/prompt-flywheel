@@ -1,0 +1,25 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "2757845649",
+      "category": "spec1.spy",
+      "description": "用户要求删除之前 spec1 到 spec4 所有产出并重新理解，表明之前的需求分析和链路拆分产出不符合预期",
+      "quote": "删除之前的spec1到 4 所有 理解重新理解"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "spec5.impl",
+      "description": "用户指出 AI 在 spec5 执行过程中遗漏了 service_xxx_query_server 的梳理",
+      "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2757865644",
+      "category": "技术栈",
+      "description": "query_render_service 服务需要升级 xxx.common 包版本的依赖关系",
+      "quote": "query_render_service服务里没有升级xxx.common包版本"
+    }
+  ]
+}

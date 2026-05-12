@@ -1,0 +1,15 @@
+{
+  "description": "V2 实验归档。各轮之间 GT 有多次修正，数据不可直接横向比较。仅供参考。",
+  "archived_at": "2026-05-11",
+  "best_results": {
+    "process_issues_best_f1": {"version": "v1.2-full-44", "f1": 0.8696, "note": "当时GT仍有错误标注"},
+    "knowledge_gaps_best_f1": {"version": "v1.5-fixed", "f1": 0.6667, "note": "修复contentId规范化后"}
+  },
+  "lessons_learned": [
+    "GT 不够稳定时不要做大量 prompt 迭代，否则无法判断是 prompt 改进还是 GT 修正带来的变化",
+    "category 级别匹配会导致同 category 多条标注被误对消",
+    "spec5.impl 和 spec3.plan 的边界最难判断（plan前端展示 vs 代码实现）",
+    "接口约束 category FP 率最高，需要在 prompt 中明确边界",
+    "纠错伴生知识（PI+KG同源）是最容易漏标的模式"
+  ]
+}

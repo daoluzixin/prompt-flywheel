@@ -1,0 +1,61 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "2757364236",
+      "category": "spec3.plan",
+      "description": "spec3.plan 执行时遗漏了 service_xxx_query_server 服务的改动点，用户需要额外要求补充",
+      "quote": "你在执行/spec3.plan的时候，遗漏了service_xxx_query_server服务的改动点，现在我需要你结合需求，梳理一下service_xxx_query_server的改动点"
+    },
+    {
+      "contentId": "2757395214",
+      "category": "spec5.impl",
+      "description": "AI 生成的代码中 appkey 过滤逻辑放在最后而非前置，用户指出应在获取数据时就按 appkey 过滤",
+      "quote": "appkey的过滤不应该前置吗，为啥要放到最后"
+    },
+    {
+      "contentId": "2757545306",
+      "category": "spec3.plan",
+      "description": "spec3.plan 梳理改动点时遗漏了 service_xxx_common 服务",
+      "quote": "你遗漏了service_xxx_common的改动点，现在你梳理一下，并完成coding"
+    },
+    {
+      "contentId": "2757545306",
+      "category": "spec3.plan",
+      "description": "spec3.plan 梳理改动点时遗漏了 service_xxx_access 服务",
+      "quote": "service_xxx_access你梳理遗漏了，现在梳理一下，并直接改代码"
+    },
+    {
+      "contentId": "2757545306",
+      "category": "spec3.plan",
+      "description": "spec3.plan 梳理改动点时遗漏了 service_xxx_datasync_server 服务",
+      "quote": "service_xxx_datasync_server你梳理遗漏了，现在梳理一下，并直接改代码"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2757364236",
+      "category": "业务规则",
+      "description": "签约类型枚举值与骑手标签的映射关系：201=类型A工人、202=类型B工人、301=类型C工人、101=类型D工人、102=类型E工人",
+      "quote": "签约类型=201 -> 类型A工人、签约类型=202 -> 类型B工人、签约类型=301 -> 类型C工人、签约类型=101 -> 类型D工人、签约类型=102 -> 类型E工人"
+    },
+    {
+      "contentId": "2757395214",
+      "category": "接口约束",
+      "description": "获取数据分片信息应使用 getDataShardInfoList 同步方法，而非 asyncGetDataShardInfoList 异步方法",
+      "quote": "不走异步asyncGetDataShardInfoList方法，直接走getDataShardInfoList同步方法"
+    },
+    {
+      "contentId": "2757395214",
+      "category": "业务规则",
+      "description": "禁用原因类型枚举值映射：0 表示单机问题，1 表示报修问题",
+      "quote": "禁用原因类型，和禁用机器的时候选择的名称一致，0表示单机问题，1表示报修问题"
+    },
+    {
+      "contentId": "2757545306",
+      "category": "业务规则",
+      "description": "降级 Key 命名规则：XXX_AGREEMENT_EXPANSION_DEGRADE 应改为 XXX_AGREEMENT_OPM_DEGRADE",
+      "quote": "XXX_AGREEMENT_EXPANSION_DEGRADE命名改成XXX_AGREEMENT_OPM_DEGRADE"
+    }
+  ]
+}

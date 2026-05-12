@@ -1,0 +1,11 @@
+{
+  "batch_index": 5,
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-010",
+      "category": "业务规则",
+      "description": "该接口非幂等，重试前必须先查询状态确认未成功才能重复调用",
+      "quote": "注意这个接口不是幂等的，重试前要先查一下状态，已经成功了就不能重复调"
+    }
+  ]
+}

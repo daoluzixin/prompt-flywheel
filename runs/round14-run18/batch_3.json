@@ -1,0 +1,73 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "Plan和Tasks拆分后校验方式未相应调整，用户指出应变化",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec5.impl",
+      "description": "前置检查脚本中知识文件命名规则需要更新为服务维度命名",
+      "quote": "这个改成 服务.md 吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "知识点收集模块的组织维度有误，应从接口维度改为服务维度",
+      "quote": "这里需要收集知识点， 那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "Plan字段引导设计不合理，note内容过于详细而其他字段缺乏思考引导",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "Plan应按流程逐步引导AI填充各字段，而非静态字段列表",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "Plan设计中关键约束信息应前置提供给AI，不应延后到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "Plan流程中遗漏了jar包读取和配置中心配置读取环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "spec5.impl",
+      "description": "AI在overview页面中将km-upload.sh的功能错误描述为上传到知识库，实际为脱敏后收集",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识文件命名规则改为\"服务.md\"格式（非原来的服务名.md）",
+      "quote": "这个改成 服务.md 吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点收集维度从接口维度改为服务维度",
+      "quote": "这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "spec对话收集机制是脱敏后本地收集，不是上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ]
+}

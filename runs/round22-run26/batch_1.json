@@ -1,0 +1,193 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 和 tasks 拆分后校验方式应相应变化",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "spec3.plan",
+      "description": "用户指出知识点收集维度从接口维度改为服务维度，plan 产出的组织维度有误",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板中各字段缺乏明确的思考引导，导致 note 过度膨胀而其他字段未充分思考",
+      "quote": "你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 设计应按流程引导 AI 逐步思考而非静态字段矩阵",
+      "quote": "我是觉得这个应该按照一个流程去引导AI"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出关键约束信息应在流程前面就明确给 AI，不应延后到第二步才说明",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 流程中遗漏了 jar 包读取和配置中心配置读取的体现",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "b0419fc0",
+      "category": "spec5.impl",
+      "description": "用户要求修复 spec5 前置检查脚本的路径解析 bug",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0",
+      "category": "spec5.impl",
+      "description": "用户建议 spec5 脚本设计改为让 AI 输入 git 目录而非脚本自动猜测",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 批注指出 spec.md 中将通知 service_task 的方式误写为接口调用，实际应为 MQ 消息",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 批注指出 spec.md 中异常类型判断应支持可配置而非硬编码",
+      "quote": "支持可配置"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 批注指出 trans 服务的职责是新增履约原子能力打标场景，而非出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 批注指出标签存储位置为物流单扩展信息的履约计划扩展标签",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 批注指出打标和发 MQ 两个操作应放入同一 redo 重试流程中",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "734b79d3",
+      "category": "spec5.impl",
+      "description": "用户指出 AI 生成的代码中 DB 持久化逻辑写在流程主干上太冗长，应抽单独方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "用户指出 spec1 服务发现环节返回的数据不全",
+      "quote": "这些不全"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点文件命名规则应为「服务名-rules.md」格式",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点收集维度从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "cda1bacd",
+      "category": "系统架构",
+      "description": "spec 对话收集机制是脱敏后本地收集，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    },
+    {
+      "contentId": "b0419fc0",
+      "category": "系统架构",
+      "description": "上传接口无需鉴权，后端接口支持随意上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传，没没问题，删除鉴权相关的就好了"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "系统架构",
+      "description": "plan 通知 service_task 的通信方式为 MQ 消息而非 RPC 接口调用",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "系统架构",
+      "description": "MQ 消息体传递物流单 id 和城市 id 字段",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "数据模型",
+      "description": "骑手标记标签存储在物流单扩展信息的履约计划扩展标签字段中",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "业务规则",
+      "description": "打履约计划标签和通知 service_task 两个操作需放入同一 redo 重试流程保证一致性",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "系统架构",
+      "description": "trans 服务的职责是新增履约原子能力打标场景，不是出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "业务规则",
+      "description": "service_task 在 service_capability 原子能力中新增加速后 eta 奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力",
+      "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力"
+    },
+    {
+      "contentId": "734b79d3",
+      "category": "接口约束",
+      "description": "订单号获取逻辑：平台配送从 packageView 取 externalOrderId；ost 有值时优先通过 getExternalOrderId 获取，无值再取 packageView.externalOrderId",
+      "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId"
+    },
+    {
+      "contentId": "734b79d3",
+      "category": "数据模型",
+      "description": "平台配送链路的 ugcupactid 存储在 orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId 中",
+      "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "数据模型",
+      "description": "ES 索引中 company_customer_id 字段需新增，当前不存在",
+      "quote": "ES字段是要新写的，字段名是company_customer_id"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "技术栈",
+      "description": "ConfigCenter 配置项 config_key_delivery_type_switch 的生产环境值为 1",
+      "quote": "config_key_delivery_type_switch值是1"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "数据模型",
+      "description": "ES 索引中 biz_line_key 字段当前不存在，需要新增",
+      "quote": "biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "系统架构",
+      "description": "AuthVerifyIface 通过 proxy 方式注入",
+      "quote": "通过proxy注入即可"
+    }
+  ]
+}

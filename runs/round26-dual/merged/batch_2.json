@@ -1,0 +1,49 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板设计不合理，note 字段内容过多而其他字段（接口、异常、降级、配置等）未被充分引导思考",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板应按思考流程引导 AI 逐步填充字段，而非静态字段列表",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板中关键约束信息放置位置不当，应在前面就明确而非到第二步才说明",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 流程遗漏了 jar 包读取和配置中心配置读取的环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 spec5 前置检查脚本将工作目录错误解析，要求修复脚本保证后续执行不出错",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的 repo 根目录解析逻辑提出改进建议，建议让 AI 显式传入 git 目录",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "系统架构",
+      "description": "知识库文档上传后端接口无需任何鉴权信息，可直接上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传"
+    }
+  ]
+}

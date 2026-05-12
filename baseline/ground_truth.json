@@ -1,0 +1,1310 @@
+{
+  "version": "3.4",
+  "schema": "3.0",
+  "description": "Spec 对话语义分析评估基准集 V3。核心改进：分层数据集(golden/silver)、难度分级(easy/medium/hard)、显式负例标注、annotation_notes 追溯标注决策。匹配仍基于 (contentId, category) 计数匹配，GT 侧的 id/quote/difficulty 用于人工审查和错误归因分析。",
+  "annotator": "annotator_001",
+  "created_at": "2026-05-11",
+  "last_modified": "2026-05-11",
+  "design_decisions": {
+    "matching_strategy": "基于 (contentId, category) 贪心计数匹配。reason: prompt 输出不含 id，无法做 item-level 精确对齐。未来如果 prompt 增加 id 输出，可升级为精确 id 匹配。",
+    "difficulty_levels": {
+      "easy": "信号明确、用户原话直白，如\"你搞错了\"、\"应该是X\"",
+      "medium": "需要理解上下文才能判断，如隐式纠正、跨轮次补充",
+      "hard": "边界模糊，需要领域知识判断是否算 PI/KG，如间接暗示、多条信息交织"
+    },
+    "tier_policy": "golden_set 为人工精标不可变基准；silver_set 为辅助扩展可修正。eval-runner 默认只跑 golden_set，--include-silver 加入 silver。",
+    "negative_annotation": "expected_negatives 标注\"容易被误判为正例\"的 case，用于 FP 分析。如果预测命中了 negative 中的 category，额外记录为 confusing_fp。"
+  },
+  "category_schema": {
+    "process_issues": {
+      "spec1.spy": "spec1 产出（spec.md/需求分析）有误或不全",
+      "spec2.clarify": "spec2 产出（outline.yml/链路拆分）有误或不全",
+      "spec3.plan": "spec3 产出（plan/方案设计/模板）有误或不全",
+      "spec4.tasks": "spec4 产出（tasks/任务拆分）有误或不全",
+      "spec5.impl": "spec5 产出（代码实现/脚本）有误或不全"
+    },
+    "knowledge_gaps": {
+      "系统架构": "服务间通信方式、模块职责边界、文件组织规则、组件注入方式",
+      "业务规则": "条件判断逻辑、一致性保证策略、降级规则、打标规则",
+      "技术栈": "框架选型约束、配置项/配置中心值、包版本依赖",
+      "组织流程": "团队协作流程、审批规则、发布流程约束",
+      "接口约束": "RPC/HTTP接口签名、出入参定义、调用方式、枚举值映射",
+      "数据模型": "字段名/路径、ES索引结构、存储位置、实体类定义"
+    }
+  },
+  "stats": {
+    "total_documents": 54,
+    "golden_documents": 28,
+    "silver_documents": 26,
+    "synthetic_documents": 10,
+    "total_process_issues": 45,
+    "total_knowledge_gaps": 36,
+    "difficulty_distribution": {
+      "process_issues": {
+        "easy": 20,
+        "medium": 13,
+        "hard": 12
+      },
+      "knowledge_gaps": {
+        "easy": 17,
+        "medium": 13,
+        "hard": 4
+      }
+    },
+    "category_distribution": {
+      "process_issues": {
+        "spec1.spy": 10,
+        "spec2.clarify": 2,
+        "spec3.plan": 20,
+        "spec4.tasks": 4,
+        "spec5.impl": 9
+      },
+      "knowledge_gaps": {
+        "系统架构": 13,
+        "业务规则": 8,
+        "技术栈": 3,
+        "组织流程": 0,
+        "接口约束": 5,
+        "数据模型": 5
+      }
+    }
+  },
+  "documents": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "file": "docs/1c1bae3d-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec4 产物删除了关键逻辑产出，spec3 模板过于冗长。1条KG关于知识文件路径规则。",
+      "expected_process_issues": [
+        {
+          "id": "pi-001",
+          "category": "spec4.tasks",
+          "description": "用户指出新版本 spec 工具删除了结构体、配置中心配置、message 等逻辑的产出内容，要求恢复",
+          "quote": "但是我发现新版本却删掉了，你来调整一下，把这些信息放到新版本里面",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-002",
+          "category": "spec4.tasks",
+          "description": "用户指出脚本获取的是 outline_file 所有服务的规范，实际应按能力维度获取对应服务的规范",
+          "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-003",
+          "category": "spec3.plan",
+          "description": "用户认为 plan 模板内容过于冗长，要求在不丢失信息的前提下精简模板",
+          "quote": "这个内容有点太多了，我知道信息确实需要这么多，但是你能不能做到在保证信息不丢失的情况下，尽可能的精简这个模版的内容呢",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-001",
+          "category": "系统架构",
+          "description": "service-framework.md 存放路径规则：~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md，不一定每个服务都有，无则参考现有代码",
+          "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-001b",
+          "category": "系统架构",
+          "description": "spec4 获取编码规范时应按能力维度筛选对应服务，非该能力下的服务规范不需要获取",
+          "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "file": "docs/3bbf3b4d-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "纯知识补充场景，无 PI。2条KG：知识文件目录组织 + plan extensions 扩展位定义。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-002",
+          "category": "系统架构",
+          "description": "知识点文件应放到每个服务目录下而非集中在用户级 ~/.catpaw/knowledge/ 目录",
+          "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-003",
+          "category": "数据模型",
+          "description": "plan 模板新增 extensions 扩展位的结构定义和优先级原则：顶层与 wf_xxx 同级，每子项含 purpose + content，仅当信息跨 step 且现有字段装不下时才使用",
+          "quote": "extensions 开放扩展位（顶层、与 wf_xxx 同级，按需使用，不需要时整块省略）：用途：承载模板已有字段装不下、且跨 step 的整体视角信息；是否使用、使用哪些子项，完全由 AI 基于当前需求判断，禁止对照固定清单填写",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "file": "docs/78e884b3-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec5 代码实现反复出错，用户多次指出未修好。典型纠错型 PI。",
+      "expected_process_issues": [
+        {
+          "id": "pi-004",
+          "category": "spec5.impl",
+          "description": "Agent 多次修改图例位置仍未正确显示，用户反复指出实现错误",
+          "quote": "还是不显示，你到底改的是什么地方啊，一开始还能显示呢",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-005",
+          "category": "spec5.impl",
+          "description": "Agent 将图例放在左下角，用户指出应在流程图框的右下侧",
+          "quote": "现在图例在左下角显示了，我要的是流程图框的右下侧",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "63b4d6c5-catpaw",
+      "file": "docs/63b4d6c5-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec5 遗漏服务。",
+      "expected_process_issues": [
+        {
+          "id": "pi-006",
+          "category": "spec5.impl",
+          "description": "Agent 拉取服务时遗漏了部分仓库，用户指出应有九个服务",
+          "quote": "不是九个服务吗",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "file": "docs/8581e6a8-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "负例文档。无 spec 流程讨论，纯功能操作。曾被误标注后已清除。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "94f4fa6b-catpaw",
+      "file": "docs/94f4fa6b-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "通过 spec-mark 删除 outline 条目，属于 spec2 产出修正。hard 难度因为是间接信号。",
+      "expected_process_issues": [
+        {
+          "id": "pi-007",
+          "category": "spec2.clarify",
+          "description": "用户通过 spec-mark 要求删除 outline.yml 中的一条路由条目，表明 spec2 outline 产出的链路拆分不符合预期",
+          "quote": "发现有一条新的未解决 mark（motvfu2l9zoz），用户要求删除 outline.yml 中\"校园订单筛选与企客权限隔离查询能力\"这整个路由条目",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "0d025ed0-catpaw",
+      "file": "docs/0d025ed0-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec3 plan 反复遗漏返回节点。典型的反复性错误。",
+      "expected_process_issues": [
+        {
+          "id": "pi-008",
+          "category": "spec3.plan",
+          "description": "用户指出AI生成plan时经常遗漏返回节点（如lop到locw返回lop），属于spec3产出的反复性错误",
+          "quote": "不是，AI经常会忘记写返回，比如说 lop到locw返回lop，再到哪里这种，他经常忘记返回lop啥的",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "71ab5b4c-catpaw",
+      "file": "docs/71ab5b4c-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "plan 解析 note 跳格问题，属于 plan 模板产出质量而非代码实现。",
+      "expected_process_issues": [
+        {
+          "id": "pi-009",
+          "category": "spec3.plan",
+          "description": "用户指出plan解析note时经常出现不明的跳格/缩进问题，影响可读性",
+          "quote": "你看下这里plan解析note的时候，我发现经常会出现不明的跳格啊 比如这种：[历史实例]: 企客校园送业务线标识写入 PR wcw#62 参照 CompatiblePackageHelp.java:341...就经常跳格",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-009b",
+          "category": "spec3.plan",
+          "description": "用户建议对plan note中方括号包裹文本和英文内容增加特殊背景渲染以提升可读性",
+          "quote": "像类似于[基线对照] 这种 括号包裹的，或者英文都可以搞特殊的背景进行渲染，这样更明显一点",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": [
+        {
+          "id": "neg-002",
+          "type": "confusing_pi",
+          "category": "spec5.impl",
+          "description": "跳格问题看似代码实现bug，但实际是plan模板产出的格式质量问题，应归入spec3.plan而非spec5.impl",
+          "quote": "经常会出现不明的跳格"
+        }
+      ]
+    },
+    {
+      "contentId": "04d6bbe9-catpaw",
+      "file": "docs/04d6bbe9-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "PI+KG 伴生：用户纠正type标记错误，同时补充了业务规则。",
+      "expected_process_issues": [
+        {
+          "id": "pi-010",
+          "category": "spec3.plan",
+          "description": "用户指出AI在plan中将含流程编排且调用下游接口的type错误标记为Local，属反复性错误",
+          "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-004",
+          "category": "业务规则",
+          "description": "流程编排类型的节点如果调用了下游接口，其type不可能是Local",
+          "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "file": "docs/1ef84a84-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "plan+tasks拆分后校验方式需变化 + 知识点维度从接口调整为服务 + 文件命名规则纠错。3PI+2KG。",
+      "expected_process_issues": [
+        {
+          "id": "pi-011",
+          "category": "spec3.plan",
+          "description": "用户指出plan和tasks拆分后校验方式应随之变化，当前校验未跟上结构调整",
+          "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-012",
+          "category": "spec3.plan",
+          "description": "用户指出知识点收集应按服务维度而非接口维度，AI按错误维度组织了知识",
+          "quote": "那你再看看这里，这里需要收集知识点，那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-036",
+          "category": "spec3.plan",
+          "description": "用户指出知识点文件命名规则有误，应改为「服务名-rules.md」",
+          "quote": "这个改成 服务名-rules.md 吧",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-005",
+          "category": "系统架构",
+          "description": "知识点文件按服务维度组织，命名为 服务名-rules.md，而非按接口维度",
+          "quote": "这个改成 服务名-rules.md 吧",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-006",
+          "category": "系统架构",
+          "description": "知识点收集维度从接口维度调整为服务维度",
+          "quote": "这个知识点不是以接口维度了，就是按照服务维度",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "file": "docs/fadb2be3-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "plan中note膨胀而其他字段空洞 + 遗漏jar包和配置中心配置读取。1条hard级KG关于字段填写边界。",
+      "expected_process_issues": [
+        {
+          "id": "pi-013",
+          "category": "spec3.plan",
+          "description": "用户指出plan中note内容过多而tech_decision等字段缺乏思考，AI没有按正确的字段边界填写",
+          "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-014",
+          "category": "spec3.plan",
+          "description": "用户指出plan中遗漏了jar包读取和配置中心配置读取，流程中应体现这两个环节",
+          "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-015",
+          "category": "spec3.plan",
+          "description": "用户指出plan设计中关键约束应在前置阶段就告诉AI，而非到D2才明确，导致AI前期缺乏指导",
+          "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-016",
+          "category": "spec3.plan",
+          "description": "用户认为plan应按思考流程引导AI逐步填充字段，而非静态字段列表，当前设计缺乏流程化引导",
+          "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-007",
+          "category": "系统架构",
+          "description": "plan中各字段的正确填写边界：接口→降级→实体类→决策→异常处理→幂等→配置中心配置，各有对应的思考维度",
+          "quote": "如果有RPC调用，那返回结果需不需要定义实体类去接收...下游接口支不支持降级...这个接口异常了我们应该怎么处理，抛异常还是redo还是retry...这个操作要不要幂等...要不要使用配置中心配置",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "file": "docs/cda1bacd-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "1条KG关于spec收集机制 + 1条PI关于overview页面描述错误。pi-015/pi-016原标注于此但quote实际存在于fadb2be3，已修正归属。",
+      "expected_process_issues": [
+        {
+          "id": "pi-035",
+          "category": "spec5.impl",
+          "description": "AI在overview页面中将km-upload.sh的功能错误描述为上传到知识库，实际应为脱敏后收集",
+          "quote": "这个不是上传到知识库，这个是脱敏后收集",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-008",
+          "category": "系统架构",
+          "description": "spec对话收集机制是脱敏后本地收集，而非上传到知识库",
+          "quote": "这个不是上传到知识库，这个是脱敏后收集",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "file": "docs/b0419fc0-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec5 脚本路径解析错误 + git目录推断改进建议。",
+      "expected_process_issues": [
+        {
+          "id": "pi-017",
+          "category": "spec5.impl",
+          "description": "用户指出 spec5 前置检查脚本路径解析错误，要求修复脚本",
+          "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-018",
+          "category": "spec5.impl",
+          "description": "用户对脚本自动推断 git 目录的设计提出改进建议，认为应让 AI 显式传入 git 目录",
+          "quote": "我觉得可以这样，就是让AI输入git目录就好了啊",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "187cf841-catpaw",
+      "file": "docs/187cf841-catpaw.md",
+      "source_date": "2026-05-07",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "负例文档，但有容易误判的编辑指令。\"TDD去掉了\"是文档编辑而非流程不满。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": [
+        {
+          "id": "neg-001",
+          "type": "confusing_pi",
+          "category": "spec3.plan",
+          "description": "用户说\"TDD我们没有实现，这块可以去掉了\"是对介绍文档内容的编辑指令，不是对 spec 流程产出的质疑",
+          "quote": "这里面的TDD我们没有实现，这块可以去掉了"
+        }
+      ]
+    },
+    {
+      "contentId": "734b79d3-catpaw",
+      "file": "docs/734b79d3-catpaw.md",
+      "source_date": "2026-05-08",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "知识库上传接口无需鉴权。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-009",
+          "category": "接口约束",
+          "description": "知识库上传后端接口无需任何鉴权信息，可直接上传",
+          "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传，没没问题，删除鉴权相关的就好了",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "f39aa58c-catpaw",
+      "file": "docs/f39aa58c-catpaw.md",
+      "source_date": "2026-05-08",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec5代码过于冗长要求抽方法 + 2条业务规则KG（订单号获取逻辑 + ugcupactid路径）。",
+      "expected_process_issues": [
+        {
+          "id": "pi-019",
+          "category": "spec5.impl",
+          "description": "用户指出 spec5 生成的代码将 DB 持久化逻辑直接写在流程主干上太冗长，要求抽取为独立方法",
+          "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-010",
+          "category": "业务规则",
+          "description": "订单号获取逻辑：平台配送直接从 packageView 取 externalOrderId；ost 有值的订单通过 getExternalOrderId 方法获取，优先级上先判断 getExternalOrderId 是否有值，无值则回退取 packageView.externalOrderId",
+          "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-011",
+          "category": "数据模型",
+          "description": "平台配送链路的 ugcupactid 存储在 orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId 中",
+          "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "file": "docs/be99243f-catpaw.md",
+      "source_date": "2026-05-09",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "spec1.spy 大量产出错误（6PI），信息密集。6条KG覆盖通信方式、存储位置、服务职责等。难度较高因为需要区分PI和KG的同源性。",
+      "expected_process_issues": [
+        {
+          "id": "pi-020",
+          "category": "spec1.spy",
+          "description": "spec1.spy 服务发现环节产出不全，总计642条服务仅返回70条，用户需手动指出数据不全",
+          "quote": "这些不全",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-021",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出的 spec.md 中 plan 通知 service_task 的通信方式写错，应为 MQ 消息而非 RPC 接口调用",
+          "quote": "MQ消息",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-022",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中 trans 的操作描述错误，应为\"新增履约原子能力打标场景\"而非\"出餐慢标签打标\"",
+          "quote": "新增履约原子能力打标场景",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-023",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中异常类型判断未体现可配置要求，硬编码了过大/过重和出餐慢异常类型",
+          "quote": "支持可配置",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-024",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中未明确打标的具体存储位置，应为物流单扩展信息的履约计划扩展标签",
+          "quote": "在物流单扩展信息的履约计划的扩展标签中新增",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-025",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中 service_task 原子能力描述不具体，应明确为在 service_capability 原子能力中新增加速后 eta 奖励时间变更为骑手考核时间能力",
+          "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-025b",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中打标和通知 service_task 两个操作未考虑一致性，用户指出应放到同一个 redo 重试流程中保证原子性",
+          "quote": "两个流程放到一个redo重试流程中",
+          "difficulty": "hard"
+        },
+        {
+          "id": "pi-025c",
+          "category": "spec1.spy",
+          "description": "spec1.spy 产出中 MQ 消息体描述不明确（仅写出餐慢异常相关信息），用户通过 spec-mark 明确应传递物流单id和城市id",
+          "quote": "履约需求修改信息，传递物流单id、城市id",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-012",
+          "category": "系统架构",
+          "description": "plan 与 service_task 之间的通信方式为 MQ 消息，非 RPC 接口调用",
+          "quote": "MQ消息",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-013",
+          "category": "数据模型",
+          "description": "骑手标记标签的存储位置为物流单扩展信息中履约计划的扩展标签字段",
+          "quote": "在物流单扩展信息的履约计划的扩展标签中新增",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-014",
+          "category": "系统架构",
+          "description": "plan 通知 service_task 的 MQ 消息体需传递物流单 id 和城市 id",
+          "quote": "履约需求修改信息，传递物流单id、城市id",
+          "difficulty": "medium"
+        },
+        {
+          "id": "kg-015",
+          "category": "业务规则",
+          "description": "service_task 收到出餐慢标签后在 service_capability 原子能力中新增「加速后 eta 奖励时间变更为骑手考核时间(scheduled_eta_ctrl)」能力",
+          "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力",
+          "difficulty": "hard"
+        },
+        {
+          "id": "kg-016",
+          "category": "系统架构",
+          "description": "trans 服务的职责是新增履约原子能力打标场景，而非处理具体业务标签打标",
+          "quote": "新增履约原子能力打标场景",
+          "difficulty": "hard"
+        },
+        {
+          "id": "kg-017",
+          "category": "业务规则",
+          "description": "打履约计划标签和发送 MQ 通知 service_task 两个操作需放入同一 redo 重试流程保证一致性",
+          "quote": "两个流程放到一个redo重试流程中",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "file": "docs/2757704387-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "golden",
+      "human_verified": true,
+      "annotation_notes": "纯知识补充场景。4条KG覆盖ES字段、配置中心配置值、注入方式。全为easy级微知识。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-018",
+          "category": "数据模型",
+          "description": "ES 索引中 company_customer_id 字段需要新增，当前索引中不存在",
+          "quote": "ES字段是要新写的，字段名是company_customer_id",
+          "difficulty": "easy"
+        },
+        {
+          "id": "kg-019",
+          "category": "技术栈",
+          "description": "配置中心配置项 config_key_delivery_type_switch 的生产环境值为 1",
+          "quote": "config_key_delivery_type_switch值是1",
+          "difficulty": "easy"
+        },
+        {
+          "id": "kg-020",
+          "category": "数据模型",
+          "description": "biz_line_key 字段在当前 ES 索引中不存在，需要新增",
+          "quote": "biz_line_key当前索引中也没有，需要新增",
+          "difficulty": "easy"
+        },
+        {
+          "id": "kg-021",
+          "category": "系统架构",
+          "description": "AuthVerifyIface 通过 proxy 方式注入",
+          "quote": "通过proxy注入即可",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "1a47fb13-catpaw",
+      "file": "docs/1a47fb13-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "空文档，无内容。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "21c5ae71-catpaw",
+      "file": "docs/21c5ae71-catpaw.md",
+      "source_date": "2026-05-06",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI整理领域定义白皮书格式。纯文档编辑任务，无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757276667-catpaw",
+      "file": "docs/2757276667-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码阅读/分析任务，用户让AI读取多个Java文件并分析缓存构建逻辑。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757306531-catpaw",
+      "file": "docs/2757306531-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码阅读任务，用户让AI读取文件和搜索代码。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757364236-catpaw",
+      "file": "docs/2757364236-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "spec3.plan遗漏服务改动点 + 用户补充签约类型枚举映射。1PI+1KG。",
+      "expected_process_issues": [
+        {
+          "id": "pi-026",
+          "category": "spec3.plan",
+          "description": "用户指出AI执行spec3.plan时遗漏了service_xxx_query_server服务的改动点",
+          "quote": "你在执行/spec3.plan的时候，遗漏了service_xxx_query_server服务的改动点，现在我需要你结合需求，梳理一下service_xxx_query_server的改动点",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-022",
+          "category": "业务规则",
+          "description": "签约类型到标签的映射关系：201→类型A工人、202→类型B工人、301→类型C工人、101→类型D工人、102→类型E工人",
+          "quote": "签约类型=201 -> 类型A工人、签约类型=202 -> 类型B工人、签约类型=301 -> 类型C工人、签约类型=101 -> 类型D工人、签约类型=102 -> 类型E工人",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757374835-catpaw",
+      "file": "docs/2757374835-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI分析定时任务逻辑、生成知识库文档、查询表使用情况。纯代码分析和文档生成，无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757395214-catpaw",
+      "file": "docs/2757395214-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "长对话涉及完整spec流程。spec5实现逻辑错误（数据分片获取方式+过滤位置）+ 2条KG（接口调用方式+禁用原因枚举）。",
+      "expected_process_issues": [
+        {
+          "id": "pi-027",
+          "category": "spec5.impl",
+          "description": "用户指出listCandidateCities中获取数据分片的方式错误，不是获取已有负载组的数据分片而是获取所有数据分片信息",
+          "quote": "/listCandidateCities在获取dataShard的时候不是要获取已有负载组的数据分片，而是获取所有的数据分片信息，可以通过asyncGetDataShardInfoList获取",
+          "difficulty": "medium"
+        },
+        {
+          "id": "pi-028",
+          "category": "spec5.impl",
+          "description": "用户指出appkey过滤逻辑不应放在最后，应前置处理",
+          "quote": "appkey的过滤不应该前置吗，为啥要放到最后",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-023",
+          "category": "接口约束",
+          "description": "获取数据分片信息应直接走getDataShardInfoList同步方法，不走异步asyncGetDataShardInfoList方法",
+          "quote": "不走异步asyncGetDataShardInfoList方法，直接走getDataShardInfoList同步方法",
+          "difficulty": "easy"
+        },
+        {
+          "id": "kg-024",
+          "category": "业务规则",
+          "description": "禁用原因类型枚举值映射：0表示单机问题，1表示报修问题，与禁用机器时选择的名称一致",
+          "quote": "禁用原因类型，和禁用机器的时候选择的名称一致，0表示单机问题，1表示报修问题",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757465526-catpaw",
+      "file": "docs/2757465526-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI执行spec4分析脚本，纯指令执行。无用户纠错或知识补充。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757545306-catpaw",
+      "file": "docs/2757545306-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "spec3.plan反复遗漏服务改动点（3个服务）+ 降级Key命名规则KG。3PI+1KG。",
+      "expected_process_issues": [
+        {
+          "id": "pi-029",
+          "category": "spec3.plan",
+          "description": "用户指出AI遗漏了service_xxx_common的改动点",
+          "quote": "你遗漏了service_xxx_common的改动点，现在你梳理一下，并完成coding",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-030",
+          "category": "spec3.plan",
+          "description": "用户指出AI遗漏了service_xxx_access的改动点",
+          "quote": "service_xxx_access你梳理遗漏了，现在梳理一下，并直接改代码",
+          "difficulty": "easy"
+        },
+        {
+          "id": "pi-031",
+          "category": "spec3.plan",
+          "description": "用户指出AI遗漏了service_xxx_datasync_server的改动点",
+          "quote": "service_xxx_datasync_server你梳理遗漏了，现在梳理一下，并直接改代码",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-025",
+          "category": "业务规则",
+          "description": "降级Key命名从XXX_AGREEMENT_EXPANSION_DEGRADE改为XXX_AGREEMENT_OPM_DEGRADE",
+          "quote": "XXX_AGREEMENT_EXPANSION_DEGRADE命名改成XXX_AGREEMENT_OPM_DEGRADE",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757666213-catpaw",
+      "file": "docs/2757666213-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码搜索任务，用户让AI搜索多个关键字的Java文件。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757696164-catpaw",
+      "file": "docs/2757696164-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码阅读任务，用户让AI读取文件和搜索代码。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757696173-catpaw",
+      "file": "docs/2757696173-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码搜索任务，AI返回搜索结果。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757845560-catpaw",
+      "file": "docs/2757845560-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI执行spec5实现脚本，纯指令执行。无用户纠错或知识补充。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757845649-catpaw",
+      "file": "docs/2757845649-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户对spec1-4产出全部不满意，要求删除重做。1PI归入spec1.spy（整体产出质量不合格）。",
+      "expected_process_issues": [
+        {
+          "id": "pi-032",
+          "category": "spec1.spy",
+          "description": "用户对之前spec1到spec4的所有产出不满意，要求全部删除重新理解",
+          "quote": "删除之前的spec1到 4 所有 理解重新理解",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757865644-catpaw",
+      "file": "docs/2757865644-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "spec3.plan遗漏服务 + 包版本依赖KG。1PI+1KG。",
+      "expected_process_issues": [
+        {
+          "id": "pi-033",
+          "category": "spec3.plan",
+          "description": "用户指出AI遗漏了service_xxx_query_server的改动点梳理",
+          "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-026",
+          "category": "技术栈",
+          "description": "query_render_service服务中需要升级xxx.common包版本",
+          "quote": "query_render_service服务里没有升级xxx.common包版本",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757972452-catpaw",
+      "file": "docs/2757972452-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI执行spec4分析脚本，纯指令执行。无用户纠错或知识补充。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757972453-catpaw",
+      "file": "docs/2757972453-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI分析链路代码位置，纯代码分析。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2757991421-catpaw",
+      "file": "docs/2757991421-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户在spec2.clarify阶段补充枚举值。2条KG（订单来源枚举+商流业务枚举）。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-027",
+          "category": "接口约束",
+          "description": "订单来源枚举值映射：全部=-1，平台A=1，平台B=100",
+          "quote": "订单来源枚举值：全部 = -1 平台A = 1 平台B = 100",
+          "difficulty": "easy"
+        },
+        {
+          "id": "kg-028",
+          "category": "接口约束",
+          "description": "商流业务wmbline枚举值（用户在spec2.clarify阶段补充的确定枚举值）",
+          "quote": "商流业务枚举",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2758011307-catpaw",
+      "file": "docs/2758011307-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯告警消息通知，无技术讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2758021373-catpaw",
+      "file": "docs/2758021373-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "spec4.tasks产出中cityId添加存疑。1PI。",
+      "expected_process_issues": [
+        {
+          "id": "pi-034",
+          "category": "spec4.tasks",
+          "description": "用户质疑spec4 tasks产出中getForceBacklogTime为何添加了cityId参数",
+          "quote": "4_getForceBacklogTime为啥cityId添加",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2758022519-catpaw",
+      "file": "docs/2758022519-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码阅读任务，用户让AI读取文件和搜索代码。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2758031444-catpaw",
+      "file": "docs/2758031444-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯告警消息通知，无技术讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "2758052387-catpaw",
+      "file": "docs/2758052387-catpaw.md",
+      "source_date": "2026-04-17",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "纯代码阅读任务，用户让AI执行git命令和读取文件。无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "d658155c-catpaw",
+      "file": "docs/d658155c-catpaw.md",
+      "source_date": "2026-05-08",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "空文档，无内容。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "d6a41c69-catpaw",
+      "file": "docs/d6a41c69-catpaw.md",
+      "source_date": "2026-05-08",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI对比两个目录内容。纯操作任务，无spec流程讨论。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "d90e2284-catpaw",
+      "file": "docs/d90e2284-catpaw.md",
+      "source_date": "2026-05-08",
+      "tier": "silver",
+      "human_verified": true,
+      "annotation_notes": "用户让AI在MEMORY.md中添加信息但未提供具体内容。纯操作任务。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-001",
+      "file": "synthetic/probes.json#syn-001",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_011",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：短文档接口约束（CDN上传无需Token）。测试模型在非spec氛围短文档中提取KG的能力。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-001",
+          "category": "接口约束",
+          "description": "CDN上传接口无需认证头，内网直接POST即可",
+          "quote": "不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-002",
+      "file": "synthetic/probes.json#syn-002",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_011",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：短文档接口约束（批量接口单次上限100）。测试模型在简短操作指导型文档中提取接口约束。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-002",
+          "category": "接口约束",
+          "description": "batchQueryOrderStatus 单次最多100个ID，超过需分片",
+          "quote": "注意一次最多100个，超过要自己分片",
+          "difficulty": "easy"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-003",
+      "file": "synthetic/probes.json#syn-003",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_011",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：短文档技术栈约束（ConfigCenter配置中心只能读不能写）。信号嵌在纠正动作中。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-003",
+          "category": "技术栈",
+          "description": "ConfigCenter 配置中心代码侧只能读不能写，写入需走审批流程在管理后台操作",
+          "quote": "ConfigCenter只能读不能写，写入要走审批流程在管理后台操作，代码里只做读取和缓存",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-004",
+      "file": "synthetic/probes.json#syn-004",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_012",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：极短泛化批注'不对'（2字否定）。测试模型对极短信号的PI识别。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-004",
+          "category": "spec1.spy",
+          "description": "用户用2字否定'不对'指出spec.md中流程描述错误",
+          "quote": "不对",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-005",
+      "file": "synthetic/probes.json#syn-005",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_012",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：极短批注'缺了'（2字）+ 后续补充dead letter topic。测试PI+伴生KG的双重识别。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-005",
+          "category": "spec1.spy",
+          "description": "用户用'缺了'指出spec.md描述不完整",
+          "quote": "缺了",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-005",
+          "category": "系统架构",
+          "description": "消息系统除主 topic 外还有 dead letter topic",
+          "quote": "还有个 dead letter topic",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-006",
+      "file": "synthetic/probes.json#syn-006",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_012",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：极短批注'有问题' + outline路由纠错。FP_012+FP_005组合变体。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-006",
+          "category": "spec2.clarify",
+          "description": "用户以'有问题'指出outline中路由依赖错误",
+          "quote": "有问题",
+          "difficulty": "hard"
+        }
+      ],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-006",
+          "category": "系统架构",
+          "description": "payment 路由不依赖 inventory 服务",
+          "quote": "outline 里 payment 路由不应该调 inventory 服务",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-007",
+      "file": "synthetic/probes.json#syn-007",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_013",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：提问式纠错'能不能简洁点'。直接变体重现pi-003的模式。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-007",
+          "category": "spec3.plan",
+          "description": "用户以'能不能简洁点'提问式指出plan模板过于复杂",
+          "quote": "这个 plan 模板你看看能不能简洁点，每次让 AI 填的时候信息太多它都不知道该怎么处理了",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-008",
+      "file": "synthetic/probes.json#syn-008",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_013",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：提问式纠错'可不可以换种方式'表达对plan可视化的不满。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-008",
+          "category": "spec3.plan",
+          "description": "用户以'可不可以'句式指出plan数据流图的可读性问题",
+          "quote": "这个数据流图可不可以换种方式画，现在这样看起来太乱了，箭头交叉太多根本看不清调用关系",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-009",
+      "file": "synthetic/probes.json#syn-009",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_013",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：提问式纠错'你看看是不是应该'用于spec4.tasks领域。测试跨category泛化。",
+      "expected_process_issues": [
+        {
+          "id": "pi-syn-009",
+          "category": "spec4.tasks",
+          "description": "用户以'是不是应该'句式指出tasks拆分粒度不合理",
+          "quote": "你看看 tasks 里这个拆分是不是应该把数据库迁移和接口改造分成两个独立任务，现在混在一起风险太高了",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_knowledge_gaps": [],
+      "expected_negatives": []
+    },
+    {
+      "contentId": "syn-010",
+      "file": "synthetic/probes.json#syn-010",
+      "source_date": "2026-05-11",
+      "tier": "golden",
+      "synthetic": true,
+      "target_failure_mode": "FP_011",
+      "human_verified": true,
+      "annotation_notes": "L3合成探针：短文档业务规则（接口非幂等、重试前需查状态）。测试操作指导型短对话中业务规则KG提取。",
+      "expected_process_issues": [],
+      "expected_knowledge_gaps": [
+        {
+          "id": "kg-syn-010",
+          "category": "业务规则",
+          "description": "该接口非幂等，重试前需先查状态避免重复调用",
+          "quote": "注意这个接口不是幂等的，重试前要先查一下状态，已经成功了就不能重复调",
+          "difficulty": "medium"
+        }
+      ],
+      "expected_negatives": []
+    }
+  ]
+}

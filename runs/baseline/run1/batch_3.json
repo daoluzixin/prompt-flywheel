@@ -1,0 +1,55 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 阶段各字段填充引导不够明确，AI 不知道该思考什么、填到哪里",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 流程中关键约束信息出现位置太晚，应在流程开头就明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 流程中遗漏了 jar 包读取和 配置中心配置读取的环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "系统架构",
+      "description": "plan 阶段各字段的设计思考流程：先确认 fp、确认依赖服务和调用方式(RPC/MQ)确定 type，再逐步填充实体类、降级、决策点、异常处理、配置中心配置等",
+      "quote": "首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "接口降级设计逻辑：需考虑接口失败是否阻塞整个流程，阻塞与不阻塞各自的处理方案",
+      "quote": "下游接口支不支持降级，如果这个接口失败了，我们要不要阻塞整个流程，如果不阻塞怎么样，阻塞怎么样最后给出建议对吧，这个就是在接口降级这块考虑的（预案建设）"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "异常处理策略需考虑：抛异常、redo（异步最终一致）、retry（同步尝试N次后失败）三种方式及幂等性",
+      "quote": "这个接口异常了我们应该怎么处理，抛异常还是redo还是retry，redo就是异步操作，最终一致，retry就是同步尝试，尝试几次失败整个流程就失败，还是说不管对吧，这个考虑完了考虑这个操作要不要幂等"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "km-upload.sh 的实际功能是脱敏后本地收集对话，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件组织规则从接口维度改为按服务维度收集和存储",
+      "quote": "这里需要收集知识点， 那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    }
+  ]
+}

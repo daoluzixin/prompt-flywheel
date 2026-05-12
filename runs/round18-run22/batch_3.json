@@ -1,0 +1,49 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "2757845649",
+      "category": "spec1.spy",
+      "description": "用户对spec1到spec4的全部产出不满意，要求删除所有内容重新理解",
+      "quote": "删除之前的spec1到 4 所有 理解重新理解"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "spec5.impl",
+      "description": "AI在梳理改动点时遗漏了service_xxx_query_server服务",
+      "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2757865644",
+      "category": "系统架构",
+      "description": "service_xxx_query_server也是本次需求涉及的改动服务之一，AI梳理时遗漏",
+      "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "技术栈",
+      "description": "query_render_service服务需要升级xxx.common包版本",
+      "quote": "query_render_service服务里没有升级xxx.common包版本"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "业务规则",
+      "description": "xxx.query服务本期只需要透传标签，不需要其他改动",
+      "quote": "本期只需要透传标签"
+    },
+    {
+      "contentId": "2757991421",
+      "category": "接口约束",
+      "description": "订单来源platformId枚举值映射：全部=-1，平台A=1，平台B=100",
+      "quote": "订单来源枚举值：\\n\\n全部 = -1\\n\\n平台A = 1\\n\\n平台B = 100"
+    },
+    {
+      "contentId": "2757991421",
+      "category": "接口约束",
+      "description": "商流业务wmbline字段的枚举值定义",
+      "quote": "商流业务枚举：\\n\\n全部 = "
+    }
+  ]
+}

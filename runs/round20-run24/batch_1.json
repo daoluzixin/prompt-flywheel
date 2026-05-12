@@ -1,0 +1,163 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84",
+      "category": "spec3.plan",
+      "description": "用户指出plan和tasks拆分后校验方式未同步调整",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "spec3.plan",
+      "description": "用户指出plan中知识点收集的组织维度错误，应从接口维度改为服务维度",
+      "quote": "那你再看看这里，这里需要收集知识点，那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出plan未按流程引导AI逐步填充各字段，而是静态字段列表",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "spec3.plan",
+      "description": "用户指出plan中关键约束信息应前置提供给AI，不应延后到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "b0419fc0",
+      "category": "spec5.impl",
+      "description": "spec5前置检查脚本解析工作目录有bug，用户要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0",
+      "category": "spec5.impl",
+      "description": "用户建议spec5脚本改为由AI显式传入git目录而非脚本自动猜测",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    },
+    {
+      "contentId": "f39aa58c",
+      "category": "spec5.impl",
+      "description": "用户指出AI生成的代码实现过于冗长，应抽取独立方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "spec1服务发现环节产出数据不完整",
+      "quote": "这些不全"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "spec1产出中异常类型判断硬编码，用户通过spec-mark批注要求支持可配置",
+      "quote": "支持可配置"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "spec1产出中打标存储位置描述不明确，用户通过spec-mark批注指出应在物流单扩展信息的履约计划扩展标签中新增",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "spec1产出中通知service_task的通信方式写错为接口调用，用户通过spec-mark批注修正为MQ消息",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "spec1.spy",
+      "description": "spec1产出中trans服务职责描述错误，用户通过spec-mark批注指出应为新增履约原子能力打标场景",
+      "quote": "新增履约原子能力打标场景"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点文件命名规则为 服务名-rules.md",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点收集维度从接口维度改为服务维度",
+      "quote": "这个知识点不是以接口维度了，就是按照服务维度"
+    },
+    {
+      "contentId": "cda1bacd",
+      "category": "系统架构",
+      "description": "km-upload.sh的职责是脱敏后本地收集对话，不是上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    },
+    {
+      "contentId": "734b79d3",
+      "category": "系统架构",
+      "description": "km-upload后端接口无需鉴权即可上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "数据模型",
+      "description": "异常标签存储在物流单扩展信息的履约计划扩展标签字段中",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "业务规则",
+      "description": "打履约计划标签和通知service_task两个操作需放入同一redo重试流程保证一致性",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "系统架构",
+      "description": "plan通知service_task的通信方式为MQ消息而非RPC接口调用",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "系统架构",
+      "description": "通知service_task的MQ消息体传递物流单id和城市id",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "业务规则",
+      "description": "service_task设置原子能力标签的具体内容为在service_capability原子能力中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力",
+      "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力"
+    },
+    {
+      "contentId": "be99243f",
+      "category": "系统架构",
+      "description": "trans服务的职责是新增履约原子能力打标场景，不是处理出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "数据模型",
+      "description": "ES中company_customer_id字段需新增，字段名为company_customer_id",
+      "quote": "ES字段是要新写的，字段名是company_customer_id"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "技术栈",
+      "description": "ConfigCenter配置项config_key_delivery_type_switch生产值为1",
+      "quote": "config_key_delivery_type_switch值是1"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "数据模型",
+      "description": "ES中biz_line_key字段当前不存在需新增",
+      "quote": "biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387",
+      "category": "系统架构",
+      "description": "AuthVerifyIface通过proxy方式注入",
+      "quote": "通过proxy注入即可"
+    }
+  ]
+}

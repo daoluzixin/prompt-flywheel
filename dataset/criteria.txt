@@ -1,0 +1,86 @@
+# Bad Case 判定标准
+# 版本：1.0
+# 创建日期：2026-05-11
+# 说明：命中任意一条即记为 bad case。评估基于 (contentId, category) 计数匹配。
+
+## ===== 一、False Negative（漏检）类 =====
+
+### FN-1: spec1.spy 类 PI 系统性漏检
+当 ground truth 中存在 spec1.spy 类 process_issue，模型预测中未产出任何 spec1.spy 条目。
+严重度：高（spec1.spy 是 GT 中第二大 PI 类别，7条，四轮平均 recall 仅 0.21）
+
+### FN-2: hard 难度 PI 漏检
+ground truth 中 difficulty=hard 的 process_issue 未被召回。
+严重度：高（hard PI 四轮平均 recall 仅 0.18，7条 hard 中平均只召回 1.25 条）
+
+### FN-3: spec2.clarify 类 PI 完全漏检
+ground truth 中唯一的 spec2.clarify PI（pi-007，通过 spec-mark 删除 outline 条目）未被召回。
+严重度：中（仅1条但属 hard 难度，信号间接）
+
+### FN-4: 纠错伴生 KG 漏检
+当用户纠正 AI 产出时（已产出 PI），伴生的 knowledge_gap 未被提取。
+判定方法：GT 中同一 contentId 同时有 PI 和 KG，模型产出了 PI 但漏掉了 KG。
+严重度：中（四轮 KG recall 波动大：0.48~0.76）
+
+### FN-5: 数据模型类 KG 漏检
+ground truth 中 category=数据模型 的 KG（5条）未被召回。
+严重度：中（四轮平均 recall ~0.60，fn 均值 2.25）
+
+### FN-6: 系统架构类 KG 漏检（针对非显性知识）
+ground truth 中 category=系统架构 且 difficulty≥medium 的 KG 未被召回。
+严重度：中（系统架构是最大 KG 类别，10条，但高难度条目易漏）
+
+## ===== 二、False Positive（误报）类 =====
+
+### FP-1: 系统架构类 KG 过度生成
+模型对某文档产出 category=系统架构 的 KG 数量超过 ground truth 中该文档的系统架构 KG 数量。
+严重度：高（run2 系统架构 FP=9，run1 FP=3，波动极大）
+
+### FP-2: spec3.plan 类 PI 过度生成
+模型对某文档产出 category=spec3.plan 的 PI 数量超过 ground truth 中该文档的 spec3.plan PI 数量。
+严重度：中（四轮 spec3.plan FP 均值 2.25，precision 不稳定）
+
+### FP-3: spec5.impl 类 PI 边界误判
+模型将非 spec5 场景（如 plan 模板渲染问题、用户自行调试代码）错误归入 spec5.impl。
+严重度：中（四轮 spec5.impl FP 均值 1.75）
+
+### FP-4: 负例文档误报
+对 expected_process_issues=[] 且 expected_knowledge_gaps=[] 的文档（负例文档），模型产出了任何 PI 或 KG。
+严重度：高（负例应零输出，任何输出即为 FP）
+
+### FP-5: confusing_negative 误触
+模型产出的条目命中了 ground truth 中 expected_negatives 标注的混淆项（如将文档编辑指令误判为 spec3.plan PI）。
+严重度：中
+
+## ===== 三、Category 错误类 =====
+
+### CAT-1: PI category 归类错误
+模型产出的 PI 条目 category 与 ground truth 不一致（如将 spec3.plan 问题归入 spec5.impl，或反之）。
+判定方法：同一 contentId 下，GT 有某 category 的 PI 但预测中没有，同时预测中出现了 GT 没有的 category。
+严重度：中
+
+### CAT-2: KG category 归类错误
+模型产出的 KG 条目 category 与 ground truth 不一致（如将业务规则归入系统架构）。
+严重度：低（KG category 边界本身有模糊性，但系统性错误仍需记录）
+
+## ===== 四、输出格式类 =====
+
+### FMT-1: 输出格式不合规
+模型输出的 JSON 不符合规定 schema（缺少必要字段、多余字段、字段类型错误）。
+严重度：一票否决
+
+### FMT-2: Quote 不可验证
+模型输出的 quote 字段内容在对应文档原文中找不到匹配（编造或拼凑引用）。
+严重度：高
+
+## ===== 五、稳定性类 =====
+
+### STAB-1: 同 prompt 跨轮次 TP 数量大幅波动
+同一 prompt 连续两次评估，某 category 的 TP 数量变化超过 ±50%。
+示例：spec1.spy TP 从 run1=2 → run2=0 → run3=1 → run4=2，run2 相比 run1 变化 100%。
+严重度：中（反映 prompt 对该类别的引导不够确定性）
+
+### STAB-2: 整体 F1 跨轮次波动超过 0.15
+同一 prompt 连续两次评估，PI 或 KG 的 F1 变化绝对值超过 0.15。
+示例：PI F1 从 run1=0.67 → run2=0.52，变化 0.15。
+严重度：中

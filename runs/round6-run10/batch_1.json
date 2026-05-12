@@ -1,0 +1,12 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "63b4d6c5-catpaw",
+      "category": "spec1.spy",
+      "description": "用户指出拉取服务阶段遗漏了服务数量，实际应有九个服务但AI只拉取了部分",
+      "quote": "不是九个服务吗"
+    }
+  ],
+  "knowledge_gaps": []
+}

@@ -1,0 +1,89 @@
+{
+  "batch_index": 3,
+  "knowledge_gaps": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "接口约束",
+      "description": "平台配送订单号从packageView.externalOrderId获取，ost有值时优先通过getExternalOrderId方法获取",
+      "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId"
+    },
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "数据模型",
+      "description": "平台配送链路的ugcupactid字段位于orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中",
+      "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "业务规则",
+      "description": "打履约计划标签和发送MQ通知service_task两个操作需放入同一redo重试流程中保证一致性",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "plan通知service_task的通信方式为MQ消息，非RPC接口调用",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "plan发送给service_task的MQ消息体传递物流单id和城市id",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "系统架构",
+      "description": "trans服务职责是新增履约原子能力打标场景，而非出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "数据模型",
+      "description": "骑手标记标签存储在物流单扩展信息的履约计划扩展标签字段中",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "业务规则",
+      "description": "service_task在service_capability原子能力中设置的具体能力为「加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)」",
+      "quote": "根据物流单上打的骑手标记「出餐慢」标签，则在原子能力service_capability中补充加速后eta奖励时间变更为骑手考核时间(scheduled_eta_ctrl)能力"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES索引中company_customer_id字段需新增，当前不存在",
+      "quote": "ES字段是要新写的，字段名是company_customer_id"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "技术栈",
+      "description": "ConfigCenter配置项config_key_delivery_type_switch的值为1",
+      "quote": "config_key_delivery_type_switch值是1"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES索引中biz_line_key字段当前不存在，需新增",
+      "quote": "biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "系统架构",
+      "description": "AuthVerifyIface通过proxy方式注入",
+      "quote": "通过proxy注入即可"
+    },
+    {
+      "contentId": "syn-001",
+      "category": "接口约束",
+      "description": "内网CDN上传接口无需认证头，直接POST即可",
+      "quote": "我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    },
+    {
+      "contentId": "syn-002",
+      "category": "接口约束",
+      "description": "batchQueryOrderStatus接口单次查询上限100个，超过需自行分片",
+      "quote": "注意一次最多100个，超过要自己分片"
+    }
+  ]
+}

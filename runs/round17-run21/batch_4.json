@@ -1,0 +1,18 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "spec5 前置检查脚本存在 bug，路径解析错误导致执行失败，用户要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的参数传递设计提出改进建议，建议由 AI 显式传入 git 目录而非脚本自动猜测",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ],
+  "knowledge_gaps": []
+}

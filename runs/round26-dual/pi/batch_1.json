@@ -1,0 +1,47 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "94f4fa6b-catpaw",
+      "category": "spec2.clarify",
+      "description": "用户通过 spec-mark 要求删除 outline.yml 中\u201c校园订单筛选与企客权限隔离查询能力\u201d路由条目，说明 spec2 拆分结果有误",
+      "quote": "用户要求删除 outline.yml 中\u201c校园订单筛选与企客权限隔离查询能力\u201d这整个路由条目"
+    },
+    {
+      "contentId": "0d025ed0-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 AI 在流程编排中经常遗漏返回路径，影响后续方案质量",
+      "quote": "AI经常会忘记写返回，比如说 lop到locw返回lop，再到哪里这种，他经常忘记返回lop啥的"
+    },
+    {
+      "contentId": "71ab5b4c-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 解析 note 时经常出现不明跳格的排版问题",
+      "quote": "你看下这里plan解析note的时候，我发现经常会出现不明的跳格啊"
+    },
+    {
+      "contentId": "71ab5b4c-catpaw",
+      "category": "spec3.plan",
+      "description": "用户对 plan note 中英文和方括号内容的渲染样式不满意，要求改进",
+      "quote": "我觉得样式不好看，你看你那个不是有大写英文字母后面跟着.方法的就会渲染成紫色啥的吗，我觉得英文都可以按照这个进行渲染"
+    },
+    {
+      "contentId": "04d6bbe9-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 AI 在流程编排类型判断中经常将有下游接口调用的场景错误标记为 Local",
+      "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 和 tasks 拆分后校验方式未相应调整",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出知识点应按服务维度组织而非接口维度，要求修正",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    }
+  ]
+}

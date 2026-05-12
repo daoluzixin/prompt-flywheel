@@ -1,0 +1,59 @@
+{
+  "batch_index": 0,
+  "knowledge_gaps": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "service-framework.md 知识点文件存放路径为 ~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md，且不一定每个服务都有",
+      "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件应放到每个服务目录下而非用户级集中目录",
+      "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "接口约束",
+      "description": "企客侧 SDK 新增的 bizLineKey 查询接口尚未提供，用于发单时记录业务线标识",
+      "quote": "todo：接口是sdk新增的，等企客侧提供新查询接口"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "数据模型",
+      "description": "bizLineKey 枚举值定义：BIZ-JISHIPEI(即时配)、BIZ-ENTERPRISE(企客)、BIZ-PAOTUI(跑腿)、BIZ-CITY-PROXY(城市代理)、BIZ-CAMPUS(校园)",
+      "quote": "bizLineKey枚举值 bizlineKey 说明 BIZ-JISHIPEI 即时配业务 BIZ-ENTERPRISE 企客业务（本次业务线） BIZ-PAOTUI 跑腿业务 BIZ-CITY-PROXY 城市代理业务 BIZ-CAMPUS 校园业务"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "数据模型",
+      "description": "企客公司ID通过 poi 聚合根路径获取：PoiView.BizPoiViewVo.BaseBo.CustomerId",
+      "quote": "poi聚合根获取企客公司id，对应字段：PoiView.BizPoiViewVo.BaseBo.CustomerId"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "业务规则",
+      "description": "企客校园送服务品牌=4020、服务产品=103645，发单流程复用5001的服务包",
+      "quote": "记录上游传入的【企客校园送】服务品牌 = 4020、【企客校园送】服务产品= 103645，发单流程上复用5001的服务包"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "业务规则",
+      "description": "企客单识别规则为 bizLineKey=\"BIZ-ENTERPRISE\"，校园单识别规则为物流单 lnt=1",
+      "quote": "企客单：企客侧本次新增的 bizLineKey = \"BIZ-ENTERPRISE\" 校园单：物流单lnt=1"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "业务规则",
+      "description": "企客销售权限通过 levelType 区分岗位：总部可查全部订单，一线销售和区域销售仅可查负责公司的订单",
+      "quote": "过滤查询 企客销售负责的订单（通过levelType区分岗位）： 企客销售总部：可查企客业务线全部订单信息 其他销售员工（包含一线销售、销售区域）仅可查询负责公司的订单（userId->公司id->单）"
+    },
+    {
+      "contentId": "8581e6a8-catpaw",
+      "category": "接口约束",
+      "description": "根据用户ID查询负责公司列表的接口需要人员侧提供新接口",
+      "quote": "todo：根据用户id查询负责公司列表接口需要人员侧提供新接口"
+    }
+  ]
+}

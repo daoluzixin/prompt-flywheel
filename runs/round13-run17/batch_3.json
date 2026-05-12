@@ -1,0 +1,79 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出plan和tasks拆分后校验方式应相应变化",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出知识点收集的组织维度应从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出plan模板中各字段缺乏明确的填充引导，note过于详细但其他字段未被充分思考",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出plan设计应按流程引导AI逐步填充而非静态矩阵",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出关键约束应前置到plan流程开头而非到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出plan流程中遗漏了jar包读取和配置中心配置读取步骤",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出AI生成的overview页面中对km-upload.sh功能描述错误，不是上传到知识库而是脱敏后收集",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件命名规则应为「服务名-rules.md」格式",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点收集维度从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "系统架构",
+      "description": "plan模板中各字段的职责分工：接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息各有对应维度",
+      "quote": "现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "异常处理策略分为三种：抛异常（阻断流程）、redo（异步最终一致）、retry（同步重试若干次后失败）",
+      "quote": "这个接口异常了我们应该怎么处理，抛异常还是redo还是retry，redo就是异步操作，最终一致，retry就是同步尝试，尝试几次失败整个流程就失败"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "km-upload.sh的实际功能是脱敏后本地收集对话，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ]
+}

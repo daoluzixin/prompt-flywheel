@@ -1,0 +1,65 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 AI 生成的代码将 DB 写入逻辑直接写在流程主干上太冗长，要求抽取为独立方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户指出 spec1 服务发现环节产出的服务列表不全",
+      "quote": "这些不全"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出 spec.md 中异常类型判断逻辑硬编码，应支持可配置",
+      "quote": "支持可配置"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出 spec.md 未明确打标存储位置，应为物流单扩展信息的履约计划扩展标签",
+      "quote": "在物流单扩展信息的履约计划的扩展标签中新增"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出 spec.md 中 plan 通知 service_task 的方式错误，应为 MQ 消息而非 RPC 接口调用",
+      "quote": "MQ消息"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出 spec.md 中 MQ 消息体字段描述缺失，应传递物流单id和城市id",
+      "quote": "履约需求修改信息，传递物流单id、城市id"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出打履约计划标签和通知 service_task 两个操作应放入同一 redo 重试流程",
+      "quote": "两个流程放到一个redo重试流程中"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "用户通过 spec-mark 指出 trans 的能力描述错误，应为新增履约原子能力打标场景，而非出餐慢标签打标",
+      "quote": "新增履约原子能力打标场景"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "spec4.tasks",
+      "description": "用户指出 spec4 产出中关于 ES 字段的假设有误，company_customer_id 和 biz_line_key 均需新增而非已有",
+      "quote": "ES字段是要新写的，字段名是company_customer_id...biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "spec4.tasks",
+      "description": "用户指出 spec4 中接口注入方式有误，应通过 proxy 注入",
+      "quote": "通过proxy注入即可"
+    }
+  ]
+}

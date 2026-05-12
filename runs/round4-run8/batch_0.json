@@ -1,0 +1,55 @@
+{
+  "batch_index": 0,
+  "process_issues": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4新版本产出删掉了结构体、配置中心配置、message等信息，用户要求恢复",
+      "quote": "但是我发现新版本却删掉了，你来调整一下，把这些信息放到新版本里面"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4脚本获取了所有服务的规范，应按能力维度筛选对应服务",
+      "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出知识点文件不应集中放在用户级目录，应放到每个服务下面的目录里",
+      "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI生成的图例代码反复无法正常显示，用户多次指出未修好",
+      "quote": "还是不显示，你到底改的是什么地方啊，一开始 还能显示呢"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI生成的图例位置不正确，显示在左下角而非用户要求的流程图框右下侧",
+      "quote": "现在图例在左下角显示了，我要的是流程图框的右下侧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "service-framework.md知识文件的存放路径规则：位于~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/目录下，不一定每个服务都有",
+      "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "业务规则",
+      "description": "spec4产出tasks时应按能力维度筛选服务的编码规范，而非获取outline中所有服务的规范",
+      "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件应放到每个服务自己的目录下，而非集中在用户级目录",
+      "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢"
+    }
+  ]
+}

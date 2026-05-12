@@ -1,0 +1,25 @@
+{
+  "batch_index": 5,
+  "process_issues": [
+    {
+      "contentId": "syn-008",
+      "category": "spec3.plan",
+      "description": "用户对 spec 产出的数据流图表达不满，认为箭头交叉太多导致调用关系看不清",
+      "quote": "这个数据流图可不可以换种方式画，现在这样看起来太乱了，箭头交叉太多根本看不清调用关系"
+    },
+    {
+      "contentId": "syn-009",
+      "category": "spec4.tasks",
+      "description": "用户指出 tasks 中数据库迁移和接口改造不应混在同一任务中，要求拆分为两个独立任务",
+      "quote": "你看看 tasks 里这个拆分是不是应该把数据库迁移和接口改造分成两个独立任务，现在混在一起风险太高了"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-010",
+      "category": "接口约束",
+      "description": "目标接口不是幂等的，重试前需先查询状态确认未成功才能重复调用",
+      "quote": "注意这个接口不是幂等的，重试前要先查一下状态，已经成功了就不能重复调"
+    }
+  ]
+}

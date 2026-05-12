@@ -1,0 +1,85 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板字段引导方式不合理，各字段未明确告诉 AI 该思考什么、填入什么",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板中关键约束信息放置位置过晚，应在流程前期就明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 流程遗漏了 jar 包读取和配置中心配置读取的工具引导",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 spec5 前置脚本 common.sh 路径解析逻辑有 bug 导致执行报错，要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的 repo 目录解析设计提出改进建议，应由 AI 显式传入 git 目录",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "cda1bacd",
+      "category": "系统架构",
+      "description": "spec 对话收集机制是脱敏后本地收集，不是上传到知识库平台",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    },
+    {
+      "contentId": "cda1bacd",
+      "category": "系统架构",
+      "description": "当前知识库并非完整四层全部接入，四层协议化知识库描述与实际不符",
+      "quote": "四层协议化知识库因为现在也不是四层放进去了，现在先写结合了知识库这个意思吧"
+    },
+    {
+      "contentId": "cda1bacd",
+      "category": "系统架构",
+      "description": "spec-setup 框架定位为面向 AI-SDLC（从想法到代码部署的全自动化流程），与其他 spec 框架（重用户澄清）的设计方向不同",
+      "quote": "这个框架：spec-setup期望未来转向AI-SDLC的框架，简单理解SDLC即AI具备自动化将一个想法转到Code并完成上限部署的流程。因此相较于其余spec框架，当前框架可能存在运行时间较长等问题"
+    },
+    {
+      "contentId": "187cf841",
+      "category": "系统架构",
+      "description": "spec 流程中的 TDD（测试驱动开发）功能当前未实现",
+      "quote": "这里面的TDD我们没有实现，这块可以去掉了"
+    },
+    {
+      "contentId": "187cf841",
+      "category": "系统架构",
+      "description": "当前知识库集成现状：概要方案阶段集成领域知识库(L3)，方案和tasks阶段集成工程知识库(L4)",
+      "quote": "目前已经在概要方案阶段集成领域知识库(L3)，方案和tasks阶段集成 工程知识库(L4)，并建设了harness保证流程稳定性"
+    },
+    {
+      "contentId": "187cf841",
+      "category": "技术栈",
+      "description": "CatPaw 针对 Claude Code 模型的上下文限制为 200K",
+      "quote": "目前catpaw针对claude code模型上下文仅限于200K，因此上下文控制问题较大"
+    },
+    {
+      "contentId": "734b79d3",
+      "category": "接口约束",
+      "description": "知识库后端上传接口无需任何鉴权信息，可直接上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传，没没问题，删除鉴权相关的就好了"
+    },
+    {
+      "contentId": "fadb2be3",
+      "category": "系统架构",
+      "description": "spec 流程中 jar 包读取和配置中心配置读取能力需要在流程中体现",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下"
+    }
+  ]
+}

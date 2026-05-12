@@ -1,0 +1,25 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "spec5 前置检查脚本存在 bug，将工作目录错解析导致执行失败，用户要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的参数传递方式提出改进建议，认为应由 AI 显式传入 git 目录而非脚本自行推断",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "系统架构",
+      "description": "后端上传接口无需任何鉴权信息，可直接上传无需认证",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传"
+    }
+  ]
+}

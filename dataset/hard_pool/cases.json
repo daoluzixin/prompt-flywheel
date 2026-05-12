@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "description": "当前 prompt 版本无法正确处理的 Bad Cases。解决后移入 baseline。",
+  "cases": [
+    {
+      "id": "FP-PI-2",
+      "type": "false_positive",
+      "metric": "process_issues",
+      "failure_mode": "FM-B: 知识事实被误判为流程不足",
+      "contentId": "2757865644-catpaw",
+      "predicted_category": "spec5.impl",
+      "expected": "应归为 knowledge_gaps(技术栈), 不应输出 PI",
+      "description": "实现阶段遗漏了query_render_service服务中xxx.common包版本的升级",
+      "quote": "query_render_service服务里没有升级xxx.common包版本",
+      "analysis": "用户在指出版本遗漏时，核心信息是'query_render_service依赖xxx.common包需要同步升级'，这是可沉淀的技术栈知识，不是对spec流程设计的不满"
+    },
+    {
+      "id": "FP-PI-3",
+      "type": "false_positive",
+      "metric": "process_issues",
+      "failure_mode": "FM-B: 知识事实被误判为流程不足",
+      "contentId": "2757545306-catpaw",
+      "predicted_category": "spec5.impl",
+      "expected": "应归为 knowledge_gaps(业务规则), 不应输出 PI",
+      "description": "降级key命名应改为XXX_AGREEMENT_OPM_DEGRADE",
+      "quote": "XXX_AGREEMENT_EXPANSION_DEGRADE命名改成XXX_AGREEMENT_OPM_DEGRADE",
+      "analysis": "用户提供的是命名规范的业务规则，不是对spec流程本身的评价。虽然AI实现错了，但用户的纠正本质是补充业务命名约定"
+    },
+    {
+      "id": "FP-PI-4",
+      "type": "false_positive",
+      "metric": "process_issues",
+      "failure_mode": "FM-B: 知识事实被误判为流程不足",
+      "contentId": "2757545306-catpaw",
+      "predicted_category": "spec5.impl",
+      "expected": "应归为 knowledge_gaps(技术栈), 不应输出 PI",
+      "description": "方法逻辑应为灰度而非降级",
+      "quote": "isWorkerAgreementExpansionDegrade内部逻辑改成灰度逻辑，参考isInKnightGray",
+      "analysis": "用户纠正的是技术实现模式(灰度vs降级)，这是技术栈知识。不属于对spec流程设计的批评"
+    },
+    {
+      "id": "FP-PI-5",
+      "type": "false_positive",
+      "metric": "process_issues",
+      "failure_mode": "FM-C: 文档编辑指令被误判为流程不足",
+      "contentId": "187cf841-catpaw",
+      "predicted_category": "spec5.impl",
+      "expected": "不应输出任何指标(expected_negative)",
+      "description": "用户要求去掉TDD相关内容",
+      "quote": "这里面的TDD我们没有实现，这块可以去掉了",
+      "analysis": "用户只是在编辑文档内容（删除一段描述），并不是在说spec流程有问题。'去掉了'是文档编辑操作，不是流程改进建议"
+    },
+    {
+      "id": "FP-PI-1",
+      "type": "false_positive",
+      "metric": "process_issues",
+      "failure_mode": "FM-B: 需求澄清被误判为流程不足",
+      "contentId": "2758021373-catpaw",
+      "predicted_category": "spec4.tasks",
+      "expected": "不应输出PI(用户只是在提问，不是抱怨)",
+      "description": "用户质疑tasks中为何要添加cityId参数",
+      "quote": "4_getForceBacklogTime为啥cityId添加",
+      "analysis": "用户问'为啥'是在寻求解释，不一定是在表达不满。需要更多上下文确认是抱怨还是纯粹提问"
+    },
+    {
+      "id": "FN-KG-batch",
+      "type": "false_negative",
+      "metric": "knowledge_gaps",
+      "failure_mode": "FM-E: 细粒度技术细节漏报",
+      "contentIds": ["2757704387-catpaw", "2757991421-catpaw", "2757465526-catpaw", "2757972452-catpaw", "2757865644-catpaw", "2757845649-catpaw", "2757545306-catpaw"],
+      "count": 15,
+      "categories_missed": ["数据模型(5)", "接口约束(4)", "技术栈(3)", "业务规则(2)", "系统架构(1)"],
+      "analysis": "大量具体的字段名、枚举值、配置项、接口参数等细粒度信息未被识别。这些知识点的共同特征：(1)非常具体的命名/数值 (2)用户以简短一句话补充 (3)往往出现在代码讨论的上下文中。prompt需要强化对此类'微知识'的灵敏度"
+    }
+  ]
+}

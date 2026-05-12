@@ -1,0 +1,73 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 和 tasks 拆分后校验方式未相应变化",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "知识点收集的组织维度有误，应从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 中各字段缺少明确的思考引导，导致 AI 只填 note 而忽略其他字段",
+      "quote": "你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 设计应按流程顺序引导 AI 逐步填充各字段，而非静态字段矩阵",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "关键约束信息应前置到流程开头，不应延迟到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 流程中遗漏了 jar 包读取和配置中心配置读取环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 对 spec-km-sync 模块的职责描述有误，不是上传到知识库而是脱敏后收集",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件命名规则应为「服务名-rules.md」格式",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点收集维度从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "系统架构",
+      "description": "plan 各字段对应的思考维度：接口确认type、实体类接收返回、降级预案建设、决策点（方案选择）、异常处理策略（抛异常/redo/retry）、配置中心抽象",
+      "quote": "如果有RPC调用，那返回结果需不需要定义 实体类去接收，如果需要那就需要定义实体类 下游接口支不支持降级，如果这个接口失败了，我们要不要阻塞整个流程...这些信息写到note里面，还有通用型考虑，要不要使用配置中心配置"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "spec-km-sync 模块的职责是对话脱敏后本地收集，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ]
+}

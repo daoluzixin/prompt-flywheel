@@ -1,0 +1,61 @@
+{
+  "batch_index": 0,
+  "process_issues": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4 新版本产出删掉了结构体、配置中心配置、message等信息，用户要求恢复",
+      "quote": "但是我发现新版本却删掉了，你来调整一下，把这些信息放到新版本里面"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4 脚本获取了所有服务的规范，应按能力维度筛选对应服务的规范",
+      "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 模板内容过于冗长，用户要求在保证信息不丢失的情况下精简模板",
+      "quote": "这个内容有点太多了，我知道信息确实需要这么多，但是你能不能做到在保证信息不丢失的情况下，尽可能的精简这个模版的内容呢"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 messages/structures/lion_configs/link_state 应内聚到 wf_xxx 内部，而非放在顶层，以提升可视化和 AI 友好性",
+      "quote": "这几项能不能放到wf_xxx里面呢，我觉得这样对用户的可视化还有AI的友好性有更好的效果"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 生成的图例显示代码反复出错，用户多次指出仍不显示",
+      "quote": "还是不显示，你到底改的是什么地方啊，一开始 还能显示呢"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 将图例实现在左下角，而用户要求的是流程图框的右下侧",
+      "quote": "现在图例在左下角显示了，我要的是流程图框的右下侧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "service-framework.md 的存放路径为 ~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md，不一定每个服务都有，缺失时参考现有代码",
+      "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "每个 task 对应不同能力，每个服务的编码规范不同，获取编码规范应按能力下的服务维度返回",
+      "quote": "因为每个task负责的能力是不一样的，每个服务的编码规范也是不一样的，所以说你看下这里返回信息怎么调整下"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件应放到每个服务目录下，而非集中在用户级目录",
+      "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "batch_index": 1,
+  "knowledge_gaps": [
+    {
+      "contentId": "04d6bbe9",
+      "category": "业务规则",
+      "description": "流程编排节点如果调用了下游接口，其类型不可能是Local",
+      "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点文件命名规则应改为按服务维度组织，命名为 服务名-rules.md",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84",
+      "category": "系统架构",
+      "description": "知识点收集维度应从接口维度调整为服务维度",
+      "quote": "那你再看看这里，这里需要收集知识点，那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    }
+  ]
+}

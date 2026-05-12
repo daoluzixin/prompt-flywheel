@@ -1,0 +1,31 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "2757865644",
+      "category": "spec5.impl",
+      "description": "AI 在梳理改动点时遗漏了 service_xxx_query_server 服务",
+      "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2757865644",
+      "category": "技术栈",
+      "description": "query_render_service 服务需要升级 xxx.common 包版本才能使用新字段",
+      "quote": "query_render_service服务里没有升级xxx.common包版本"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "业务规则",
+      "description": "本期 xxx.query 服务只需要透传标签，不需要做其他改动",
+      "quote": "本期只需要透传标签"
+    },
+    {
+      "contentId": "2757991421",
+      "category": "接口约束",
+      "description": "订单来源（platformId）枚举值定义：全部=-1、平台A=1、平台B=100",
+      "quote": "订单来源枚举值：\\n\\n全部 = -1\\n\\n平台A = 1\\n\\n平台B = 100"
+    }
+  ]
+}

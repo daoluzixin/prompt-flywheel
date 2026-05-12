@@ -1,0 +1,12 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "63b4d6c5-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 执行 spec5 克隆仓库时遗漏了部分服务，用户指出应有九个服务",
+      "quote": "不是九个服务吗"
+    }
+  ],
+  "knowledge_gaps": []
+}

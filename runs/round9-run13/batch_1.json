@@ -1,0 +1,12 @@
+{
+  "batch_index": 1,
+  "process_issues": [
+    {
+      "contentId": "63b4d6c5-catpaw",
+      "category": "spec5.impl",
+      "description": "spec5 执行阶段 AI 仅 clone 了部分仓库，遗漏了应有的九个服务",
+      "quote": "不是九个服务吗"
+    }
+  ],
+  "knowledge_gaps": []
+}

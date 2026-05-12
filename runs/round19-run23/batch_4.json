@@ -1,0 +1,19 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "2758021373",
+      "category": "spec4.tasks",
+      "description": "spec4 tasks 产出中为 getForceBacklogTime 方法错误添加了 cityId 参数",
+      "quote": "4_getForceBacklogTime为啥cityId添加"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-001",
+      "category": "系统架构",
+      "description": "CDN上传接口为内网服务，无需任何认证头，直接POST即可",
+      "quote": "不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    }
+  ]
+}

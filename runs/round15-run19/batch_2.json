@@ -1,0 +1,31 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "0d025ed0-catpaw",
+      "category": "spec3.plan",
+      "description": "AI 生成 plan 数据流时经常遗漏返回路径，用户建议改用其他形式以确保 AI 遵守",
+      "quote": "AI经常会忘记写返回，比如说 lop到locw返回lop，再到哪里这种，他经常忘记返回lop啥的"
+    },
+    {
+      "contentId": "71ab5b4c-catpaw",
+      "category": "spec3.plan",
+      "description": "plan 解析 note 时经常出现不明跳格，前端渲染格式异常",
+      "quote": "plan解析note的时候，我发现经常会出现不明的跳格啊 比如这种"
+    },
+    {
+      "contentId": "04d6bbe9-catpaw",
+      "category": "spec3.plan",
+      "description": "AI 在生成流程编排节点类型时经常将调用了下游接口的节点错误标记为 Local 类型",
+      "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "04d6bbe9-catpaw",
+      "category": "业务规则",
+      "description": "流程编排节点类型判定规则：如果节点调用了下游接口，其 type 不可能是 Local",
+      "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的"
+    }
+  ]
+}

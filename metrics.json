@@ -1,0 +1,6365 @@
+{
+  "schema_version": "3.0",
+  "description": "Spec 日报 Prompt 评估迭代记录。V3 重置：基于 ground_truth V3 schema（golden-tier 18篇精标文档，25 PI + 21 KG）。历史实验数据已归档至 metrics_v2_archive.json。",
+  "baseline_info": {
+    "gt_version": "3.1",
+    "golden_documents": 18,
+    "total_process_issues": 27,
+    "total_knowledge_gaps": 22,
+    "reset_date": "2026-05-11",
+    "last_modified": "2026-05-11",
+    "modification_note": "V3.1: 从 v1.8 FP 分析中确认 3 条 GT 漏标并补入（2PI: be99243f spec1.spy redo一致性+MQ消息体字段; 1KG: 1c1bae3d 系统架构 按能力维度筛选服务）"
+  },
+  "iterations": [
+    {
+      "version": "v3.0-run1",
+      "date": "2026-05-11",
+      "prompt_hash": "239e849a5d4f",
+      "note": "第一轮评估 golden-only",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 17,
+        "true_positives": 14,
+        "false_positives": 3,
+        "false_negatives": 11,
+        "precision": 0.8235,
+        "recall": 0.56,
+        "f1": 0.6667
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 23,
+        "true_positives": 16,
+        "false_positives": 7,
+        "false_negatives": 5,
+        "precision": 0.6957,
+        "recall": 0.7619,
+        "f1": 0.7273
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 4
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 4
+          },
+          "spec4.tasks": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 3,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 2,
+            "missed": 5,
+            "recall": 0.2857
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run2",
+      "date": "2026-05-11",
+      "prompt_hash": "239e849a5d4f",
+      "note": "第二轮评估 golden-only",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 17,
+        "true_positives": 11,
+        "false_positives": 6,
+        "false_negatives": 14,
+        "precision": 0.6471,
+        "recall": 0.44,
+        "f1": 0.5238
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 25,
+        "true_positives": 10,
+        "false_positives": 15,
+        "false_negatives": 11,
+        "precision": 0.4,
+        "recall": 0.4762,
+        "f1": 0.4348
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 6
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 6,
+            "fp": 3,
+            "fn": 4
+          },
+          "spec4.tasks": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 3,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 5,
+            "fp": 9,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 1
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 3
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 9,
+            "missed": 2,
+            "recall": 0.8182
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 4,
+            "missed": 3,
+            "recall": 0.5714
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 0,
+            "missed": 7,
+            "recall": 0.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 2,
+            "missed": 5,
+            "recall": 0.2857
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 7,
+            "missed": 3,
+            "recall": 0.7
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run3",
+      "date": "2026-05-11",
+      "prompt_hash": "239e849a5d4f",
+      "note": "第三轮评估 golden-only",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 15,
+        "true_positives": 13,
+        "false_positives": 2,
+        "false_negatives": 12,
+        "precision": 0.8667,
+        "recall": 0.52,
+        "f1": 0.65
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 13,
+        "true_positives": 11,
+        "false_positives": 2,
+        "false_negatives": 10,
+        "precision": 0.8462,
+        "recall": 0.5238,
+        "f1": 0.6471
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 5
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 4
+          },
+          "spec4.tasks": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 5,
+            "fp": 2,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 1,
+            "missed": 6,
+            "recall": 0.1429
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 5,
+            "missed": 5,
+            "recall": 0.5
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 1,
+            "missed": 3,
+            "recall": 0.25
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run4",
+      "date": "2026-05-11",
+      "prompt_hash": "239e849a5d4f",
+      "note": "第四轮评估 golden-only",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 18,
+        "true_positives": 13,
+        "false_positives": 5,
+        "false_negatives": 12,
+        "precision": 0.7222,
+        "recall": 0.52,
+        "f1": 0.6047
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 19,
+        "true_positives": 13,
+        "false_positives": 6,
+        "false_negatives": 8,
+        "precision": 0.6842,
+        "recall": 0.619,
+        "f1": 0.65
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 4
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 6,
+            "fp": 3,
+            "fn": 4
+          },
+          "spec4.tasks": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 7,
+            "fp": 2,
+            "fn": 3
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 3
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 9,
+            "missed": 2,
+            "recall": 0.8182
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 2,
+            "missed": 5,
+            "recall": 0.2857
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 4,
+            "missed": 3,
+            "recall": 0.5714
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 7,
+            "missed": 3,
+            "recall": 0.7
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run5",
+      "date": "2026-05-11",
+      "prompt_hash": "ba68622ddc4f",
+      "note": "飞轮 Round 1: 增加 spec1.spy spec-mark 模式描述 + 3 正例。决策: KEEP",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 26,
+        "true_positives": 18,
+        "false_positives": 8,
+        "false_negatives": 7,
+        "precision": 0.6923,
+        "recall": 0.72,
+        "f1": 0.7059
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 29,
+        "true_positives": 18,
+        "false_positives": 11,
+        "false_negatives": 3,
+        "precision": 0.6207,
+        "recall": 0.8571,
+        "f1": 0.72
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 7,
+            "fp": 4,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 7,
+            "fn": 0
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 8,
+            "missed": 2,
+            "recall": 0.8
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run6",
+      "date": "2026-05-11",
+      "prompt_hash": "2c5d5ebc678e",
+      "note": "飞轮 Round 2: 增加系统架构反例约束 + 数据模型边界区分。决策: KEEP",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 21,
+        "true_positives": 16,
+        "false_positives": 5,
+        "false_negatives": 9,
+        "precision": 0.7619,
+        "recall": 0.64,
+        "f1": 0.6957
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 21,
+        "true_positives": 19,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "precision": 0.9048,
+        "recall": 0.9048,
+        "f1": 0.9048
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 5,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 7,
+            "fp": 2,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 4,
+            "missed": 3,
+            "recall": 0.5714
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.0-run7",
+      "date": "2026-05-11",
+      "prompt_hash": "06cbf186415e",
+      "note": "飞轮 Round 3: 增加 spec4.tasks 边界区分 + 正例。决策: KEEP",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 20,
+        "true_positives": 18,
+        "false_positives": 2,
+        "false_negatives": 7,
+        "precision": 0.9,
+        "recall": 0.72,
+        "f1": 0.8
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 19,
+        "true_positives": 17,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.8947,
+        "recall": 0.8095,
+        "f1": 0.85
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 4
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 9,
+            "missed": 2,
+            "recall": 0.8182
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.4",
+      "date": "2026-05-11",
+      "prompt_hash": "0c653227bc39",
+      "note": "Round4: added dedicated spec3.plan section with patterns, boundary rules, 3 positive examples",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 25,
+        "true_positives": 20,
+        "false_positives": 5,
+        "false_negatives": 5,
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1": 0.8
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 22,
+        "true_positives": 18,
+        "false_positives": 4,
+        "false_negatives": 3,
+        "precision": 0.8182,
+        "recall": 0.8571,
+        "f1": 0.8372
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 7,
+            "fp": 3,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "v1.5",
+      "date": "2026-05-11",
+      "prompt_hash": "6bd2f1d0ed3f",
+      "note": "Round5: precision recovery - spec3.plan negatives, spec1.spy merge principle, PI merge rule",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 18,
+        "true_positives": 17,
+        "false_positives": 1,
+        "false_negatives": 8,
+        "precision": 0.9444,
+        "recall": 0.68,
+        "f1": 0.7907
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 20,
+        "true_positives": 17,
+        "false_positives": 3,
+        "false_negatives": 4,
+        "precision": 0.85,
+        "recall": 0.8095,
+        "f1": 0.8293
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 9,
+            "missed": 2,
+            "recall": 0.8182
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 4,
+            "missed": 3,
+            "recall": 0.5714
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "v1.5b",
+      "date": "2026-05-11",
+      "prompt_hash": "1178efc7fd59",
+      "note": "Round5b: spec3.plan negatives (file placement, indirect mention), spec1.spy independence principle (pro-recall)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 27,
+        "true_positives": 22,
+        "false_positives": 5,
+        "false_negatives": 3,
+        "precision": 0.8148,
+        "recall": 0.88,
+        "f1": 0.8462
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 25,
+        "true_positives": 19,
+        "false_positives": 6,
+        "false_negatives": 2,
+        "precision": 0.76,
+        "recall": 0.9048,
+        "f1": 0.8261
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 2,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 2,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 4,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "v1.6-round6",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "KG precision: add spec template design/methodology to exclusion list",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 24,
+        "true_positives": 20,
+        "false_positives": 4,
+        "false_negatives": 5,
+        "precision": 0.8333,
+        "recall": 0.8,
+        "f1": 0.8163
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 21,
+        "true_positives": 18,
+        "false_positives": 3,
+        "false_negatives": 3,
+        "precision": 0.8571,
+        "recall": 0.8571,
+        "f1": 0.8571
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 8,
+            "fp": 3,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "v1.7-round7",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "PI/KG independence: clarify KG exclusions dont affect PI extraction",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 28,
+        "true_positives": 21,
+        "false_positives": 7,
+        "false_negatives": 4,
+        "precision": 0.75,
+        "recall": 0.84,
+        "f1": 0.7925
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 23,
+        "true_positives": 18,
+        "false_positives": 5,
+        "false_negatives": 3,
+        "precision": 0.7826,
+        "recall": 0.8571,
+        "f1": 0.8182
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 8,
+            "fp": 4,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 5,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 5,
+            "missed": 2,
+            "recall": 0.7143
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "v1.7",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 26,
+        "true_positives": 22,
+        "false_positives": 4,
+        "false_negatives": 3,
+        "precision": 0.8462,
+        "recall": 0.88,
+        "f1": 0.8627
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 14,
+        "true_positives": 14,
+        "false_positives": 0,
+        "false_negatives": 7,
+        "precision": 1.0,
+        "recall": 0.6667,
+        "f1": 0.8
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 9,
+            "missed": 2,
+            "recall": 0.8182
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 8,
+            "missed": 2,
+            "recall": 0.8
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.8",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 27,
+        "true_positives": 23,
+        "false_positives": 4,
+        "false_negatives": 2,
+        "precision": 0.8519,
+        "recall": 0.92,
+        "f1": 0.8846
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 20,
+        "true_positives": 19,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.95,
+        "recall": 0.9048,
+        "f1": 0.9268
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 25,
+        "true_positives": 24,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "precision": 0.96,
+        "recall": 0.96,
+        "f1": 0.96
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 20,
+        "true_positives": 17,
+        "false_positives": 3,
+        "false_negatives": 4,
+        "precision": 0.85,
+        "recall": 0.8095,
+        "f1": 0.8293
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 3,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.8b",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 25,
+        "total_predicted": 22,
+        "true_positives": 20,
+        "false_positives": 2,
+        "false_negatives": 5,
+        "precision": 0.9091,
+        "recall": 0.8,
+        "f1": 0.8511
+      },
+      "knowledge_gaps": {
+        "total_expected": 21,
+        "total_predicted": 22,
+        "true_positives": 18,
+        "false_positives": 4,
+        "false_negatives": 3,
+        "precision": 0.8182,
+        "recall": 0.8571,
+        "f1": 0.8372
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 3
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 4,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 7,
+            "recalled": 4,
+            "missed": 3,
+            "recall": 0.5714
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-reeval-r9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "round9 predictions re-evaluated against GT v3.1 (27PI+22KG)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 27,
+        "true_positives": 25,
+        "false_positives": 2,
+        "false_negatives": 2,
+        "precision": 0.9259,
+        "recall": 0.9259,
+        "f1": 0.9259
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 20,
+        "false_positives": 0,
+        "false_negatives": 2,
+        "precision": 1.0,
+        "recall": 0.9091,
+        "f1": 0.9524
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-reeval-r10",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "round10 predictions re-evaluated against GT v3.1",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 25,
+        "true_positives": 24,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.96,
+        "recall": 0.8889,
+        "f1": 0.9231
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 18,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.9,
+        "recall": 0.8182,
+        "f1": 0.8571
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 2,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 7,
+            "missed": 2,
+            "recall": 0.7778
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-reeval-r11",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "round11 predictions re-evaluated against GT v3.1",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 22,
+        "true_positives": 20,
+        "false_positives": 2,
+        "false_negatives": 7,
+        "precision": 0.9091,
+        "recall": 0.7407,
+        "f1": 0.8163
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 22,
+        "true_positives": 19,
+        "false_positives": 3,
+        "false_negatives": 3,
+        "precision": 0.8636,
+        "recall": 0.8636,
+        "f1": 0.8636
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 5
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 3,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 4,
+            "missed": 5,
+            "recall": 0.4444
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-round12",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Round 12: first fresh run with GT v3.1 (27PI+22KG)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 26,
+        "true_positives": 25,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.9615,
+        "recall": 0.9259,
+        "f1": 0.9434
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 19,
+        "true_positives": 18,
+        "false_positives": 1,
+        "false_negatives": 4,
+        "precision": 0.9474,
+        "recall": 0.8182,
+        "f1": 0.878
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-round13",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Round 13: second fresh run with GT v3.1",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 28,
+        "true_positives": 26,
+        "false_positives": 2,
+        "false_negatives": 1,
+        "precision": 0.9286,
+        "recall": 0.963,
+        "f1": 0.9455
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 21,
+        "true_positives": 20,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.9524,
+        "recall": 0.9091,
+        "f1": 0.9302
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v3.1-round14",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Round 14: third fresh run with GT v3.1",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 27,
+        "total_predicted": 29,
+        "true_positives": 26,
+        "false_positives": 3,
+        "false_negatives": 1,
+        "precision": 0.8966,
+        "recall": 0.963,
+        "f1": 0.9286
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 19,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.95,
+        "recall": 0.8636,
+        "f1": 0.9048
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "round12-reeval-gt32",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Re-eval with GT v3.2 (added pi-009b, pi-035)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 29,
+        "total_predicted": 26,
+        "true_positives": 26,
+        "false_positives": 0,
+        "false_negatives": 3,
+        "precision": 1.0,
+        "recall": 0.8966,
+        "f1": 0.9455
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 19,
+        "true_positives": 18,
+        "false_positives": 1,
+        "false_negatives": 4,
+        "precision": 0.9474,
+        "recall": 0.8182,
+        "f1": 0.878
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 13,
+            "recalled": 12,
+            "missed": 1,
+            "recall": 0.9231
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "round13-reeval-gt32",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Re-eval with GT v3.2 (added pi-009b, pi-035)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 29,
+        "total_predicted": 28,
+        "true_positives": 27,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.9643,
+        "recall": 0.931,
+        "f1": 0.9474
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 21,
+        "true_positives": 20,
+        "false_positives": 1,
+        "false_negatives": 2,
+        "precision": 0.9524,
+        "recall": 0.9091,
+        "f1": 0.9302
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 13,
+            "recalled": 13,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "round14-reeval-gt32",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Re-eval with GT v3.2 (added pi-009b, pi-035)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 29,
+        "total_predicted": 29,
+        "true_positives": 28,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "precision": 0.9655,
+        "recall": 0.9655,
+        "f1": 0.9655
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 19,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.95,
+        "recall": 0.8636,
+        "f1": 0.9048
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 13,
+            "recalled": 13,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "round15-prompt-v1.9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "First run with prompt v1.9 (added spec2.clarify guidance, KG edge case refinement)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 29,
+        "total_predicted": 28,
+        "true_positives": 25,
+        "false_positives": 3,
+        "false_negatives": 4,
+        "precision": 0.8929,
+        "recall": 0.8621,
+        "f1": 0.8772
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 18,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.9,
+        "recall": 0.8182,
+        "f1": 0.8571
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 13,
+            "recalled": 11,
+            "missed": 2,
+            "recall": 0.8462
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "round16-prompt-v1.9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Second run with prompt v1.9",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 29,
+        "total_predicted": 28,
+        "true_positives": 26,
+        "false_positives": 2,
+        "false_negatives": 3,
+        "precision": 0.9286,
+        "recall": 0.8966,
+        "f1": 0.9123
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 21,
+        "true_positives": 19,
+        "false_positives": 2,
+        "false_negatives": 3,
+        "precision": 0.9048,
+        "recall": 0.8636,
+        "f1": 0.8837
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 2,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 13,
+            "recalled": 11,
+            "missed": 2,
+            "recall": 0.8462
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "round15-reeval-gt33",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Re-eval R15 with GT v3.3 (added pi-036)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 30,
+        "total_predicted": 28,
+        "true_positives": 26,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.9286,
+        "recall": 0.8667,
+        "f1": 0.8966
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 20,
+        "true_positives": 18,
+        "false_positives": 2,
+        "false_negatives": 4,
+        "precision": 0.9,
+        "recall": 0.8182,
+        "f1": 0.8571
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      }
+    },
+    {
+      "version": "round16-reeval-gt33",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Re-eval R16 with GT v3.3 (added pi-036)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 30,
+        "total_predicted": 28,
+        "true_positives": 27,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.9643,
+        "recall": 0.9,
+        "f1": 0.931
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 21,
+        "true_positives": 19,
+        "false_positives": 2,
+        "false_negatives": 3,
+        "precision": 0.9048,
+        "recall": 0.8636,
+        "f1": 0.8837
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "round16-final-gt33",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "Final eval R16 with GT v3.3",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 30,
+        "total_predicted": 28,
+        "true_positives": 27,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.9643,
+        "recall": 0.9,
+        "f1": 0.931
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 21,
+        "true_positives": 19,
+        "false_positives": 2,
+        "false_negatives": 3,
+        "precision": 0.9048,
+        "recall": 0.8636,
+        "f1": 0.8837
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 10,
+            "missed": 1,
+            "recall": 0.9091
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      }
+    },
+    {
+      "version": "round17-prompt-v1.9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 18,
+      "process_issues": {
+        "total_expected": 30,
+        "total_predicted": 28,
+        "true_positives": 27,
+        "false_positives": 1,
+        "false_negatives": 3,
+        "precision": 0.9643,
+        "recall": 0.9,
+        "f1": 0.931
+      },
+      "knowledge_gaps": {
+        "total_expected": 22,
+        "total_predicted": 22,
+        "true_positives": 21,
+        "false_positives": 1,
+        "false_negatives": 1,
+        "precision": 0.9545,
+        "recall": 0.9545,
+        "f1": 0.9545
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 10,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 0
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 11,
+            "fp": 0,
+            "fn": 0
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 0
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 14,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 7,
+            "recalled": 7,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 7,
+            "recalled": 6,
+            "missed": 1,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 11,
+            "recalled": 11,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 4,
+            "missed": 0,
+            "recall": 1.0
+          }
+        }
+      }
+    },
+    {
+      "version": "R18-L3",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "L3 synthetic generalization probes: 10 adversarial samples added (FP_011/012/013)",
+      "tier": "golden+silver",
+      "gt_schema": "3.0",
+      "documents_evaluated": 54,
+      "process_issues": {
+        "total_expected": 45,
+        "total_predicted": 41,
+        "true_positives": 29,
+        "false_positives": 12,
+        "false_negatives": 16,
+        "precision": 0.7073,
+        "recall": 0.6444,
+        "f1": 0.6744
+      },
+      "knowledge_gaps": {
+        "total_expected": 35,
+        "total_predicted": 37,
+        "true_positives": 21,
+        "false_positives": 16,
+        "false_negatives": 14,
+        "precision": 0.5676,
+        "recall": 0.6,
+        "f1": 0.5833
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 3,
+            "fp": 6,
+            "fn": 8
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 0,
+            "fn": 7
+          },
+          "spec4.tasks": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 8,
+            "fp": 6,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 5,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 5
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 1
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 5,
+            "fp": 4,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 20,
+            "recalled": 14,
+            "missed": 6,
+            "recall": 0.7
+          },
+          "medium": {
+            "total": 13,
+            "recalled": 12,
+            "missed": 1,
+            "recall": 0.9231
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 5,
+            "missed": 7,
+            "recall": 0.4167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 16,
+            "recalled": 9,
+            "missed": 7,
+            "recall": 0.5625
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 11,
+            "missed": 4,
+            "recall": 0.7333
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "R18-L3-golden",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "L3 synthetic probes, golden-only (18 original + 10 synthetic = 28 docs)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 41,
+        "true_positives": 24,
+        "false_positives": 17,
+        "false_negatives": 12,
+        "precision": 0.5854,
+        "recall": 0.6667,
+        "f1": 0.6234
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 37,
+        "true_positives": 16,
+        "false_positives": 21,
+        "false_negatives": 12,
+        "precision": 0.4324,
+        "recall": 0.5714,
+        "f1": 0.4923
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 2,
+            "fp": 7,
+            "fn": 8
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 8,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 5,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 4,
+            "fn": 3
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 2,
+            "fn": 1
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 7,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 5,
+            "missed": 7,
+            "recall": 0.4167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 4,
+            "missed": 5,
+            "recall": 0.4444
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 11,
+            "missed": 4,
+            "recall": 0.7333
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "R18-L3-subset",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "L3 probes, subset-only golden matching (fair comparison with R17)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 25,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 41,
+        "true_positives": 24,
+        "false_positives": 17,
+        "false_negatives": 12,
+        "precision": 0.5854,
+        "recall": 0.6667,
+        "f1": 0.6234
+      },
+      "knowledge_gaps": {
+        "total_expected": 24,
+        "total_predicted": 37,
+        "true_positives": 16,
+        "false_positives": 21,
+        "false_negatives": 8,
+        "precision": 0.4324,
+        "recall": 0.6667,
+        "f1": 0.5246
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 2,
+            "fp": 7,
+            "fn": 8
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 8,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 5,
+            "fn": 4
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 4,
+            "fn": 3
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 2,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 7,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 0
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 9,
+            "missed": 1,
+            "recall": 0.9
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 5,
+            "missed": 7,
+            "recall": 0.4167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 5,
+            "recalled": 4,
+            "missed": 1,
+            "recall": 0.8
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 11,
+            "missed": 4,
+            "recall": 0.7333
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 36,
+        "true_positives": 27,
+        "false_positives": 9,
+        "false_negatives": 9,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 34,
+        "true_positives": 21,
+        "false_positives": 13,
+        "false_negatives": 7,
+        "precision": 0.6176,
+        "recall": 0.75,
+        "f1": 0.6774
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 0,
+            "fn": 4
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 7,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 11,
+            "fp": 3,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 4,
+            "fn": 2
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 1,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 9,
+            "missed": 3,
+            "recall": 0.75
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 7,
+            "missed": 2,
+            "recall": 0.7778
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 12,
+            "missed": 3,
+            "recall": 0.8
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R20",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 33,
+        "true_positives": 25,
+        "false_positives": 8,
+        "false_negatives": 11,
+        "precision": 0.7576,
+        "recall": 0.6944,
+        "f1": 0.7246
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 32,
+        "true_positives": 20,
+        "false_positives": 12,
+        "false_negatives": 8,
+        "precision": 0.625,
+        "recall": 0.7143,
+        "f1": 0.6667
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 4
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 5
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 5,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 11,
+            "fp": 2,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 1,
+            "fp": 5,
+            "fn": 2
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 11,
+            "missed": 3,
+            "recall": 0.7857
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 9,
+            "missed": 3,
+            "recall": 0.75
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 6,
+            "missed": 3,
+            "recall": 0.6667
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 12,
+            "missed": 3,
+            "recall": 0.8
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R21",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 42,
+        "true_positives": 32,
+        "false_positives": 10,
+        "false_negatives": 4,
+        "precision": 0.7619,
+        "recall": 0.8889,
+        "f1": 0.8205
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 33,
+        "true_positives": 22,
+        "false_positives": 11,
+        "false_negatives": 6,
+        "precision": 0.6667,
+        "recall": 0.7857,
+        "f1": 0.7213
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 10,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 1,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 7,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 12,
+            "fp": 2,
+            "fn": 1
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 3,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 12,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 7,
+            "missed": 2,
+            "recall": 0.7778
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 13,
+            "missed": 2,
+            "recall": 0.8667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R22",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 37,
+        "true_positives": 23,
+        "false_positives": 14,
+        "false_negatives": 13,
+        "precision": 0.6216,
+        "recall": 0.6389,
+        "f1": 0.6301
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 34,
+        "true_positives": 17,
+        "false_positives": 17,
+        "false_negatives": 11,
+        "precision": 0.5,
+        "recall": 0.6071,
+        "f1": 0.5484
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 2,
+            "fp": 6,
+            "fn": 8
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 4,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 3,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 5,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 6,
+            "fn": 3
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 4,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 11,
+            "missed": 3,
+            "recall": 0.7857
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 5,
+            "missed": 7,
+            "recall": 0.4167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 9,
+            "missed": 6,
+            "recall": 0.6
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 0,
+            "missed": 4,
+            "recall": 0.0
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R23",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 41,
+        "true_positives": 31,
+        "false_positives": 10,
+        "false_negatives": 5,
+        "precision": 0.7561,
+        "recall": 0.8611,
+        "f1": 0.8052
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 32,
+        "true_positives": 23,
+        "false_positives": 9,
+        "false_negatives": 5,
+        "precision": 0.7188,
+        "recall": 0.8214,
+        "f1": 0.7667
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 9,
+            "fp": 1,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 7,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 4,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 3,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 12,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 13,
+            "missed": 2,
+            "recall": 0.8667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R24",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 40,
+        "true_positives": 27,
+        "false_positives": 13,
+        "false_negatives": 9,
+        "precision": 0.675,
+        "recall": 0.75,
+        "f1": 0.7105
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 32,
+        "true_positives": 22,
+        "false_positives": 10,
+        "false_negatives": 6,
+        "precision": 0.6875,
+        "recall": 0.7857,
+        "f1": 0.7333
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 5,
+            "fp": 3,
+            "fn": 5
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 2,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 7,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 2
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 12,
+            "missed": 2,
+            "recall": 0.8571
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 8,
+            "missed": 4,
+            "recall": 0.6667
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 12,
+            "missed": 3,
+            "recall": 0.8
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v1.9-R25",
+      "date": "2026-05-11",
+      "prompt_hash": "unknown",
+      "note": "",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 37,
+        "true_positives": 24,
+        "false_positives": 13,
+        "false_negatives": 12,
+        "precision": 0.6486,
+        "recall": 0.6667,
+        "f1": 0.6575
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 32,
+        "true_positives": 18,
+        "false_positives": 14,
+        "false_negatives": 10,
+        "precision": 0.5625,
+        "recall": 0.6429,
+        "f1": 0.6
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 3,
+            "fp": 6,
+            "fn": 7
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 1,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 5,
+            "fp": 5,
+            "fn": 2
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 9,
+            "fp": 5,
+            "fn": 4
+          },
+          "业务规则": {
+            "tp": 2,
+            "fp": 3,
+            "fn": 3
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 4,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 3,
+            "fp": 1,
+            "fn": 2
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 11,
+            "missed": 3,
+            "recall": 0.7857
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 6,
+            "missed": 6,
+            "recall": 0.5
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 10,
+            "missed": 5,
+            "recall": 0.6667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 0,
+            "missed": 4,
+            "recall": 0.0
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v2.0-dual-pass",
+      "date": "2026-05-12",
+      "prompt_hash": "f62ffb74ff71",
+      "note": "独立Pass拆分实验R26：PI-only+KG-only",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 39,
+        "true_positives": 32,
+        "false_positives": 7,
+        "false_negatives": 4,
+        "precision": 0.8205,
+        "recall": 0.8889,
+        "f1": 0.8533
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 27,
+        "true_positives": 19,
+        "false_positives": 8,
+        "false_negatives": 9,
+        "precision": 0.7037,
+        "recall": 0.6786,
+        "f1": 0.6909
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 13,
+            "fp": 4,
+            "fn": 1
+          },
+          "spec4.tasks": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 1
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 7,
+            "fp": 1,
+            "fn": 6
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 3,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 2,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 12,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 7,
+            "missed": 2,
+            "recall": 0.7778
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 10,
+            "missed": 5,
+            "recall": 0.6667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v2.0-dual-pass-R27",
+      "date": "2026-05-12",
+      "prompt_hash": "unknown",
+      "note": "独立Pass拆分实验R27",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 39,
+        "true_positives": 31,
+        "false_positives": 8,
+        "false_negatives": 5,
+        "precision": 0.7949,
+        "recall": 0.8611,
+        "f1": 0.8267
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 31,
+        "true_positives": 20,
+        "false_positives": 11,
+        "false_negatives": 8,
+        "precision": 0.6452,
+        "recall": 0.7143,
+        "f1": 0.678
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 4,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 6
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 4,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 5,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 12,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 10,
+            "missed": 5,
+            "recall": 0.6667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [
+          {
+            "contentId": "71ab5b4c-catpaw",
+            "predicted_category": "spec5.impl",
+            "neg_id": "neg-002",
+            "reason": "跳格问题看似代码实现bug，但实际是plan模板产出的格式质量问题，应归入spec3.plan而非spec5.impl"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v2.0-dual-pass-R28",
+      "date": "2026-05-12",
+      "prompt_hash": "unknown",
+      "note": "独立Pass拆分实验R28",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 38,
+        "true_positives": 31,
+        "false_positives": 7,
+        "false_negatives": 5,
+        "precision": 0.8158,
+        "recall": 0.8611,
+        "f1": 0.8378
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 35,
+        "true_positives": 20,
+        "false_positives": 15,
+        "false_negatives": 8,
+        "precision": 0.5714,
+        "recall": 0.7143,
+        "f1": 0.6349
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 5
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 7,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 3,
+            "fp": 4,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 4,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 11,
+            "missed": 1,
+            "recall": 0.9167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 10,
+            "missed": 5,
+            "recall": 0.6667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "v2.0-dual-pass-R27-detail",
+      "date": "2026-05-12",
+      "prompt_hash": "unknown",
+      "note": "R27 detail",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 39,
+        "true_positives": 31,
+        "false_positives": 8,
+        "false_negatives": 5,
+        "precision": 0.7949,
+        "recall": 0.8611,
+        "f1": 0.8267
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 31,
+        "true_positives": 20,
+        "false_positives": 11,
+        "false_negatives": 8,
+        "precision": 0.6452,
+        "recall": 0.7143,
+        "f1": 0.678
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 9,
+            "fp": 0,
+            "fn": 1
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 11,
+            "fp": 4,
+            "fn": 3
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 2,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 7,
+            "fp": 0,
+            "fn": 6
+          },
+          "业务规则": {
+            "tp": 4,
+            "fp": 4,
+            "fn": 1
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 3,
+            "fp": 2,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 5,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 12,
+            "missed": 0,
+            "recall": 1.0
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 10,
+            "missed": 5,
+            "recall": 0.6667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 2,
+            "missed": 2,
+            "recall": 0.5
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [
+          {
+            "contentId": "71ab5b4c-catpaw",
+            "predicted_category": "spec5.impl",
+            "neg_id": "neg-002",
+            "reason": "跳格问题看似代码实现bug，但实际是plan模板产出的格式质量问题，应归入spec3.plan而非spec5.impl"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "r29",
+      "date": "2026-05-12",
+      "prompt_hash": "unknown",
+      "note": "R29: KG prompt FP reduction + arch recall",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 38,
+        "true_positives": 31,
+        "false_positives": 7,
+        "false_negatives": 5,
+        "precision": 0.8158,
+        "recall": 0.8611,
+        "f1": 0.8378
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 29,
+        "true_positives": 24,
+        "false_positives": 5,
+        "false_negatives": 4,
+        "precision": 0.8276,
+        "recall": 0.8571,
+        "f1": 0.8421
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 13,
+            "fp": 2,
+            "fn": 0
+          },
+          "业务规则": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 2
+          },
+          "技术栈": {
+            "tp": 2,
+            "fp": 1,
+            "fn": 0
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 2,
+            "fp": 2,
+            "fn": 1
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 11,
+            "missed": 1,
+            "recall": 0.9167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 8,
+            "missed": 1,
+            "recall": 0.8889
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 13,
+            "missed": 2,
+            "recall": 0.8667
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "version": "r30",
+      "date": "2026-05-12",
+      "prompt_hash": "unknown",
+      "note": "R30: category boundary fix (接口约束/业务规则/系统架构)",
+      "tier": "golden-only",
+      "gt_schema": "3.0",
+      "documents_evaluated": 28,
+      "process_issues": {
+        "total_expected": 36,
+        "total_predicted": 38,
+        "true_positives": 31,
+        "false_positives": 7,
+        "false_negatives": 5,
+        "precision": 0.8158,
+        "recall": 0.8611,
+        "f1": 0.8378
+      },
+      "knowledge_gaps": {
+        "total_expected": 28,
+        "total_predicted": 32,
+        "true_positives": 26,
+        "false_positives": 6,
+        "false_negatives": 2,
+        "precision": 0.8125,
+        "recall": 0.9286,
+        "f1": 0.8667
+      },
+      "category_breakdown": {
+        "process_issues": {
+          "spec1.spy": {
+            "tp": 8,
+            "fp": 0,
+            "fn": 2
+          },
+          "spec2.clarify": {
+            "tp": 2,
+            "fp": 0,
+            "fn": 0
+          },
+          "spec3.plan": {
+            "tp": 12,
+            "fp": 3,
+            "fn": 2
+          },
+          "spec4.tasks": {
+            "tp": 3,
+            "fp": 3,
+            "fn": 0
+          },
+          "spec5.impl": {
+            "tp": 6,
+            "fp": 1,
+            "fn": 1
+          }
+        },
+        "knowledge_gaps": {
+          "系统架构": {
+            "tp": 13,
+            "fp": 5,
+            "fn": 0
+          },
+          "业务规则": {
+            "tp": 5,
+            "fp": 0,
+            "fn": 0
+          },
+          "技术栈": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 1
+          },
+          "组织流程": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "接口约束": {
+            "tp": 3,
+            "fp": 0,
+            "fn": 0
+          },
+          "数据模型": {
+            "tp": 4,
+            "fp": 0,
+            "fn": 1
+          }
+        }
+      },
+      "difficulty_breakdown": {
+        "process_issues": {
+          "easy": {
+            "total": 14,
+            "recalled": 13,
+            "missed": 1,
+            "recall": 0.9286
+          },
+          "medium": {
+            "total": 10,
+            "recalled": 10,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "hard": {
+            "total": 12,
+            "recalled": 11,
+            "missed": 1,
+            "recall": 0.9167
+          }
+        },
+        "knowledge_gaps": {
+          "easy": {
+            "total": 9,
+            "recalled": 9,
+            "missed": 0,
+            "recall": 1.0
+          },
+          "medium": {
+            "total": 15,
+            "recalled": 14,
+            "missed": 1,
+            "recall": 0.9333
+          },
+          "hard": {
+            "total": 4,
+            "recalled": 3,
+            "missed": 1,
+            "recall": 0.75
+          }
+        }
+      },
+      "confusing_fps": {
+        "process_issues": [],
+        "knowledge_gaps": []
+      }
+    }
+  ]
+}

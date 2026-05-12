@@ -1,0 +1,11 @@
+{
+  "batch_index": 0,
+  "knowledge_gaps": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "service-framework.md 文件存放在 ~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/ 路径下，task 产出时依赖该文件，但不是每个服务都有",
+      "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可"
+    }
+  ]
+}

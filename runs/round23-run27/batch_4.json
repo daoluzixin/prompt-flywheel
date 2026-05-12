@@ -1,0 +1,31 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "2758021373",
+      "category": "spec4.tasks",
+      "description": "spec4 tasks 产出中为 getForceBacklogTime 方法错误添加了 cityId 参数，该参数在原方法调用链中不存在",
+      "quote": "4_getForceBacklogTime为啥cityId添加"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2758021373",
+      "category": "接口约束",
+      "description": "出餐分位数多维度优先级覆盖顺序通过 getValueWithDimensionPriority 方法查询，该方法定义了维度优先级逻辑",
+      "quote": "这个是在参数配置平台配置好的 getValueWithDimensionPriority查看这个方法即可"
+    },
+    {
+      "contentId": "2758021373",
+      "category": "业务规则",
+      "description": "地理维度层级关系：区域包含城市，算法按区域灰度与工程按城市灰度天然对齐",
+      "quote": "算法按区域 是按照区域的 区域是包含城市的肯定"
+    },
+    {
+      "contentId": "syn-001",
+      "category": "接口约束",
+      "description": "内部 CDN 上传接口为内网服务，直接 POST 即可，无需任何认证头",
+      "quote": "不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    }
+  ]
+}

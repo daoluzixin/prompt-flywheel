@@ -1,0 +1,19 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "2758021373",
+      "category": "spec4.tasks",
+      "description": "spec4 tasks 产出中为 getForceBacklogTime 方法错误添加了 cityId 参数，原方法签名中不存在该参数",
+      "quote": "4_getForceBacklogTime\u4e3a\u5565cityId\u6dfb\u52a0"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-001",
+      "category": "\u7cfb\u7edf\u67b6\u6784",
+      "description": "CDN\u63a5\u53e3\u4e3a\u5185\u7f51\u670d\u52a1\uff0c\u4e0d\u9700\u8981\u4efb\u4f55\u8ba4\u8bc1\u5934\uff0c\u76f4\u63a5POST\u5373\u53ef",
+      "quote": "\u4e0d\u7528token\uff0c\u6211\u4eecCDN\u63a5\u53e3\u662f\u5185\u7f51\u7684\uff0c\u76f4\u63a5POST\u5c31\u884c\uff0c\u4e0d\u9700\u8981\u4efb\u4f55\u8ba4\u8bc1\u5934"
+    }
+  ]
+}

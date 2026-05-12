@@ -1,0 +1,67 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "plan与tasks拆分后校验方式未同步变化，check脚本仍沿用合并前的逻辑",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "知识点收集的组织维度错误，应从接口维度改为服务维度",
+      "quote": "那你再看看这里，这里需要收集知识点，那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan模板字段填充缺乏流程化引导，note字段过于详细而接口、降级、决策等字段缺乏思考引导，应改为按流程逐步推进",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan流程中关键约束信息应前置到流程开头，不应延迟到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan探索/设计流程遗漏了jar包读取和配置中心配置读取环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件应按服务维度组织，而非按接口维度组织",
+      "quote": "这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "系统架构",
+      "description": "plan模板包含接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息共九类字段，各字段有明确的信息归属分工",
+      "quote": "现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "异常处理中redo为异步操作保证最终一致性，retry为同步重试尝试若干次后失败则整个流程失败",
+      "quote": "redo就是异步操作，最终一致，retry就是同步尝试，尝试几次失败整个流程就失败，还是说不管"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "功能实现应优先考虑使用配置中心配置做抽象化，后续类似需求可仅配置lion无需新增代码",
+      "quote": "要不要使用配置中心配置，抽象一点，后续类似的需求可以只配置lion不需要新增code了"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "spec对话同步机制（km-upload.sh）是脱敏后本地收集对话，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "batch_index": 1,
+  "knowledge_gaps": [
+    {
+      "contentId": "04d6bbe9-catpaw",
+      "category": "业务规则",
+      "description": "流程编排节点若调用了下游接口，其类型不可能是 Local",
+      "quote": "里面有流程编排 类型的话如果有调用下游接口的话，就一定不可能是Local的，我看经常犯这个错误"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "spec5 前置检查脚本解析工作目录出错，用户要求修复脚本保证后续执行不出错",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "接口约束",
+      "description": "后端上传接口无需鉴权信息，可直接上传无需认证",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "total_docs": 28,
+  "total_batches": 6,
+  "batch_size": 5,
+  "batches": [
+    {
+      "batch_index": 0,
+      "docs": [
+        {
+          "contentId": "1c1bae3d-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/1c1bae3d-catpaw.md"
+        },
+        {
+          "contentId": "3bbf3b4d-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/3bbf3b4d-catpaw.md"
+        },
+        {
+          "contentId": "78e884b3-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/78e884b3-catpaw.md"
+        },
+        {
+          "contentId": "63b4d6c5-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/63b4d6c5-catpaw.md"
+        },
+        {
+          "contentId": "8581e6a8-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/8581e6a8-catpaw.md"
+        }
+      ]
+    },
+    {
+      "batch_index": 1,
+      "docs": [
+        {
+          "contentId": "94f4fa6b-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/94f4fa6b-catpaw.md"
+        },
+        {
+          "contentId": "0d025ed0-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/0d025ed0-catpaw.md"
+        },
+        {
+          "contentId": "71ab5b4c-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/71ab5b4c-catpaw.md"
+        },
+        {
+          "contentId": "04d6bbe9-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/04d6bbe9-catpaw.md"
+        },
+        {
+          "contentId": "1ef84a84-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/1ef84a84-catpaw.md"
+        }
+      ]
+    },
+    {
+      "batch_index": 2,
+      "docs": [
+        {
+          "contentId": "fadb2be3-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/fadb2be3-catpaw.md"
+        },
+        {
+          "contentId": "cda1bacd-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/cda1bacd-catpaw.md"
+        },
+        {
+          "contentId": "b0419fc0-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/b0419fc0-catpaw.md"
+        },
+        {
+          "contentId": "187cf841-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/187cf841-catpaw.md"
+        },
+        {
+          "contentId": "734b79d3-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/734b79d3-catpaw.md"
+        }
+      ]
+    },
+    {
+      "batch_index": 3,
+      "docs": [
+        {
+          "contentId": "f39aa58c-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/f39aa58c-catpaw.md"
+        },
+        {
+          "contentId": "be99243f-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/be99243f-catpaw.md"
+        },
+        {
+          "contentId": "2757704387-catpaw",
+          "file": "daily-report-optimized/eval/baseline/docs/2757704387-catpaw.md"
+        },
+        {
+          "contentId": "syn-001",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-001"
+        },
+        {
+          "contentId": "syn-002",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-002"
+        }
+      ]
+    },
+    {
+      "batch_index": 4,
+      "docs": [
+        {
+          "contentId": "syn-003",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-003"
+        },
+        {
+          "contentId": "syn-004",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-004"
+        },
+        {
+          "contentId": "syn-005",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-005"
+        },
+        {
+          "contentId": "syn-006",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-006"
+        },
+        {
+          "contentId": "syn-007",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-007"
+        }
+      ]
+    },
+    {
+      "batch_index": 5,
+      "docs": [
+        {
+          "contentId": "syn-008",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-008"
+        },
+        {
+          "contentId": "syn-009",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-009"
+        },
+        {
+          "contentId": "syn-010",
+          "file": "daily-report-optimized/eval/baseline/docs/probes.json#syn-010"
+        }
+      ]
+    }
+  ]
+}

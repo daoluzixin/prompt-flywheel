@@ -1,0 +1,35 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板字段引导方式不合理，各字段未明确告诉 AI 该思考什么、填入什么",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板中关键约束信息放置位置过晚，应在流程前期就明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 流程遗漏了 jar 包读取和配置中心配置读取的工具引导",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 spec5 前置脚本 common.sh 路径解析逻辑有 bug 导致执行报错，要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的 repo 目录解析设计提出改进建议，应由 AI 显式传入 git 目录",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ]
+}

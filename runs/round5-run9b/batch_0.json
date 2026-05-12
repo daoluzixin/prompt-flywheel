@@ -1,0 +1,61 @@
+{
+  "batch_index": 0,
+  "process_issues": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4 新版本产出删掉了结构体、配置中心配置、message等信息，用户要求恢复",
+      "quote": "但是我发现新版本却删掉了，你来调整一下，把这些信息放到新版本里面"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "spec4 脚本获取了所有服务的规范，应按能力维度筛选对应服务",
+      "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户建议将 messages、structures、lion_configs、link_state 放入 wf_xxx 内部以提升可视化和 AI 友好性",
+      "quote": "这几项能不能放到wf_xxx里面呢，我觉得这样对用户的可视化还有AI的友好性有更好的效果"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 生成的图例功能与知识库平台/标记按钮位置重叠",
+      "quote": "这个位置和  知识库平台还有标记 重叠了"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 生成的图例代码反复无法正常显示，用户多次指出未修好",
+      "quote": "还是不显示，你到底改的是什么地方啊，一开始 还能显示呢"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 将图例放在了错误的位置（左下角），用户要求放在流程图框右下侧",
+      "quote": "现在图例在左下角显示了，我要的是流程图框的右下侧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "service-framework.md 文件路径规则：位于 ~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/ 下，不一定每个服务都有",
+      "quote": "~/.catpaw/knowledge/teams/{teamId}/nrp/repo_wiki/{服务名称}/service-framework.md task的时候需要依赖这个内容来产出tasks，但是这个不一定每个服务都有，如果没有的话那就参考现有代码即可"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "系统架构",
+      "description": "编码规范获取应按能力维度下的服务分组返回，而非获取所有服务的规范",
+      "quote": "因为每个task负责的能力是不一样的，每个服务的编码规范也是不一样的，所以说你看下这里返回信息怎么调整下"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件应放到每个服务自己的目录下，而非集中在用户级目录",
+      "quote": "我是觉得是不是应该直接放到每个服务下面的一个目录里面呢"
+    }
+  ]
+}

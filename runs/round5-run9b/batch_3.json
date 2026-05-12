@@ -1,0 +1,97 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "plan和tasks拆分后，校验方式未同步调整",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "知识点的组织维度有误，应从接口维度改为服务维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度，你来修正一下"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan模板中各字段缺乏明确的填写指引，导致AI只填note而忽略其他字段",
+      "quote": "你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan设计应按思考流程引导AI逐步填充字段，而非静态字段矩阵",
+      "quote": "我是觉得这个应该按照一个流程去引导AI 首先针对每个功能点，那就确认了fp 这个功能点前面介绍是什么，outline里面有没有依赖其他服务，有的话是RPC还是MQ，依赖了下游接口，就确认了type"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "关键约束信息应前置到DESIGN章节开头，不应延迟到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan流程中遗漏了jar包读取和配置中心配置读取环节",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "spec3.plan",
+      "description": "overview中未体现知识库汇聚能力，且信息转换闭环描述过于技术化难以理解",
+      "quote": "这里根本没有体现出我们汇聚了知识库 三次范式跃迁这个东西可以不讲 spec1 拆 fp-01 … fp-N（EARS 功能点）……这个可以写的通俗易懂一点，这样写太难理解了"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点文件的命名规则应为「服务名-rules.md」格式",
+      "quote": "现在这个得变化一下，这个改成 服务名-rules.md 吧"
+    },
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "知识点应按服务维度组织，而非按接口维度",
+      "quote": "那这个知识点不是以接口维度了，就是按照服务维度"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "plan中各字段的分工规则：接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息各有对应维度",
+      "quote": "现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "plan方案设计的标准思考流程：确认功能点→判断RPC/MQ依赖→确定type→判断实体类需求→评估降级策略→决策存储方案→异常处理策略→幂等性→配置中心配置抽象",
+      "quote": "首先针对每个功能点，那就确认了fp……有的话是RPC还是MQ，依赖了下游接口，就确认了type……如果有RPC调用，那返回结果需不需要定义 实体类去接收……下游接口支不支持降级……是一个复用字段还是新增字段，是存储到这里还是存储到那里"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "异常处理策略分类：抛异常、redo（异步最终一致）、retry（同步重试N次后失败或忽略），需同时考虑幂等性",
+      "quote": "这个接口异常了我们应该怎么处理，抛异常还是redo还是retry，redo就是异步操作，最终一致，retry就是同步尝试，尝试几次失败整个流程就失败，还是说不管对吧，这个考虑完了考虑这个操作要不要幂等"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "spec-mark的知识收集流程是脱敏后本地收集对话，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "spec-setup框架定位为AI-SDLC框架，与其他spec框架的核心差异在于减少用户澄清、增加AI独立决策，因此运行时间较长",
+      "quote": "spec-setup期望未来转向AI-SDLC的框架……相较于其余spec框架，当前框架可能存在运行时间较长等问题……其余的spec框架更多的是引入大量的用户澄清来保证质量，因此目标不一致导致框架设计方向是不一致的"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "业务规则",
+      "description": "AI-SDLC核心困难点包括：稳定性控制（AI中断恢复、check不通过重跑）、上下文控制（独立单元独立上下文）、知识库建设（终态无需用户介入）、流程过渡平滑（spec到code需适配AI增删环节）、跨链路/跨服务一致性（subAgent信息不互通）",
+      "quote": "稳定性控制：就是保障未来AI-SDLC全流程跑完的必要条件……上下文控制：让该有的信息都有，让不该有的信息都没有……知识库建设：SDLC必要……流程过度平滑：RD开发流程不一定适合给AI去开发……跨链路 / 跨服务一致性：这个就是你说的，subAgent之间信息不互通"
+    }
+  ]
+}

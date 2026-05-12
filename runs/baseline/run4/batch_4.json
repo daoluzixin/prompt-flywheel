@@ -1,0 +1,31 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "spec5 前置检查脚本解析工作目录路径错误，用户要求修复脚本保证后续执行不出错",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "spec5.impl",
+      "description": "AI 生成的代码在流程主干上写入过多逻辑，用户要求抽取为独立方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "业务规则",
+      "description": "订单号获取逻辑：平台配送从 packageView.externalOrderId 取；ost 有值时优先通过 getExternalOrderId 方法获取",
+      "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId"
+    },
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "数据模型",
+      "description": "平台配送链路的 ugcupactid 字段路径为 orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId",
+      "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中"
+    }
+  ]
+}

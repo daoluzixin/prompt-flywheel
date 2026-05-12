@@ -1,0 +1,152 @@
+{
+  "schema_version": "2.0",
+  "description": "L3 合成泛化探针。基于 failure_patterns.jsonl 中 active 模式的措辞/场景变体，用于检测 prompt 是否对已知 case 过拟合或存在系统性盲区。每个 probe 包含一个模拟对话片段和期望输出，通过 eval-runner 的 synthetic 模式评估。",
+  "generated_from": ["FP_011", "FP_012", "FP_013"],
+  "generation_date": "2026-05-11",
+  "probes": [
+    {
+      "id": "syn-001",
+      "target_failure_mode": "FP_011",
+      "title": "短文档接口约束：CDN上传无需Token",
+      "conversation_snippet": "## Round 1\n**User**: 帮我写个上传图片到CDN的脚本\n\n**AI**: 好的，我来写一个带认证Token的上传脚本...\n\n## Round 2\n**User**: 不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头\n\n**AI**: 明白了，我去掉认证部分。",
+      "expected_output": {
+        "process_issues": [],
+        "knowledge_gaps": [
+          {"category": "接口约束", "rationale": "CDN上传接口无需认证头是稳定的接口约束知识"}
+        ]
+      },
+      "difficulty": "easy",
+      "rationale": "FP_011 变体：短文档中用户以操作指令形式补充接口约束（无需认证），文档整体看起来只是写脚本不像 spec 讨论，测试模型是否会因'非 spec 氛围'而跳过 KG 提取"
+    },
+    {
+      "id": "syn-002",
+      "target_failure_mode": "FP_011",
+      "title": "短文档接口约束：批量接口单次上限",
+      "conversation_snippet": "## Round 1\n**User**: 批量查询订单状态怎么调\n\n**AI**: 可以用 batchQueryOrderStatus 接口，传入订单ID列表...\n\n## Round 2\n**User**: 注意一次最多100个，超过要自己分片\n\n**AI**: 好的，我加上分片逻辑。",
+      "expected_output": {
+        "process_issues": [],
+        "knowledge_gaps": [
+          {"category": "接口约束", "rationale": "batchQueryOrderStatus 单次最多100个ID是接口约束"}
+        ]
+      },
+      "difficulty": "easy",
+      "rationale": "FP_011 变体：短对话中用户简短补充接口调用限制。测试模型在简短操作指导型文档中是否仍能提取接口约束"
+    },
+    {
+      "id": "syn-003",
+      "target_failure_mode": "FP_011",
+      "title": "短文档技术栈约束：配置中心只读",
+      "conversation_snippet": "## Round 1\n**User**: 帮我加一个动态开关\n\n**AI**: 我通过 ConfigCenter 配置中心写入一个 boolean 配置项...\n\n## Round 2\n**User**: ConfigCenter只能读不能写，写入要走审批流程在管理后台操作，代码里只做读取和缓存\n\n**AI**: 了解，我改成只读取 ConfigCenter 配置。",
+      "expected_output": {
+        "process_issues": [],
+        "knowledge_gaps": [
+          {"category": "技术栈", "rationale": "ConfigCenter 配置中心代码侧只能读不能写、写入需走审批流程是技术栈约束"}
+        ]
+      },
+      "difficulty": "medium",
+      "rationale": "FP_011 变体：短文档中用户纠正 AI 对配置中心的使用方式。信号嵌在纠正动作中但本质是可沉淀的技术栈知识"
+    },
+    {
+      "id": "syn-004",
+      "target_failure_mode": "FP_012",
+      "title": "极短泛化批注：不对",
+      "conversation_snippet": "## Round 3\n**User**: 看下 spec.md 第三段\n\n**AI**: 好的，第三段描述了订单创建流程：先校验库存，然后锁定价格...\n\n## Round 4\n**User**: 不对\n\n**AI**: 抱歉，让我重新检查。实际应该是先锁定价格再校验库存...",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec1.spy", "rationale": "用户用'不对'否定 spec.md 中的流程描述，是对 spec1 产出的纠错"}
+        ],
+        "knowledge_gaps": []
+      },
+      "difficulty": "hard",
+      "rationale": "FP_012 变体：2字极短否定批注'不对'，不指向具体错误点。测试模型是否能将其识别为独立 PI 而非忽略"
+    },
+    {
+      "id": "syn-005",
+      "target_failure_mode": "FP_012",
+      "title": "极短泛化批注：缺了",
+      "conversation_snippet": "## Round 5\n**User**: spec 里对消息中间件的说明\n\n**AI**: spec.md 中描述使用 Kafka 作为消息队列，topic 为 order_notify...\n\n## Round 6\n**User**: 缺了\n\n## Round 7\n**User**: 还有个 dead letter topic\n\n**AI**: 明白了，我补充 dead letter queue 的说明。",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec1.spy", "rationale": "用户用'缺了'指出 spec.md 描述不完整，后续补充了具体缺失内容"}
+        ],
+        "knowledge_gaps": [
+          {"category": "系统架构", "rationale": "消息系统还有 dead letter topic 是系统架构知识"}
+        ]
+      },
+      "difficulty": "hard",
+      "rationale": "FP_012 变体：'缺了'（2字）+ 后续补充。测试模型是否能将'缺了'识别为 PI，同时把补充的 dead letter topic 识别为伴生 KG"
+    },
+    {
+      "id": "syn-006",
+      "target_failure_mode": "FP_012",
+      "title": "极短泛化批注：有问题",
+      "conversation_snippet": "## Round 2\n**User**: 有问题\n\n**AI**: 请问具体是哪里有问题？\n\n## Round 3\n**User**: outline 里 payment 路由不应该调 inventory 服务\n\n**AI**: 了解，我把 payment 路由中对 inventory 的依赖去掉。",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec2.clarify", "rationale": "用户指出 outline 中路由依赖错误并要求删除，是对 spec2 产出的纠错"}
+        ],
+        "knowledge_gaps": [
+          {"category": "系统架构", "rationale": "payment 路由不依赖 inventory 服务是系统架构知识"}
+        ]
+      },
+      "difficulty": "hard",
+      "rationale": "FP_012+FP_005 组合变体：极短批注'有问题' + outline 路由纠错。同时测试 spec2.clarify 识别和极短批注处理"
+    },
+    {
+      "id": "syn-007",
+      "target_failure_mode": "FP_013",
+      "title": "提问式纠错：能不能简洁点",
+      "conversation_snippet": "## Round 4\n**User**: 这个 plan 模板你看看能不能简洁点，每次让 AI 填的时候信息太多它都不知道该怎么处理了\n\n**AI**: 好的，我来精简 plan 模板，把次要字段设为可选...",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec3.plan", "rationale": "用户以提问句式指出 plan 模板过于复杂导致 AI 无法有效填充，是对 spec3 产出设计的不满"}
+        ],
+        "knowledge_gaps": []
+      },
+      "difficulty": "medium",
+      "rationale": "FP_013 直接变体：'能不能简洁点'的提问式纠错。用不同措辞重现 pi-003 的模式，测试模型是否能泛化识别"
+    },
+    {
+      "id": "syn-008",
+      "target_failure_mode": "FP_013",
+      "title": "提问式纠错：可不可以换种方式",
+      "conversation_snippet": "## Round 3\n**User**: 这个数据流图可不可以换种方式画，现在这样看起来太乱了，箭头交叉太多根本看不清调用关系\n\n**AI**: 好的，我换用分层布局来重绘数据流图...",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec3.plan", "rationale": "用户以'可不可以'句式指出 plan 数据流图的可读性问题，本质是对 spec3 产出质量的不满"}
+        ],
+        "knowledge_gaps": []
+      },
+      "difficulty": "medium",
+      "rationale": "FP_013 变体：'可不可以换种方式'表达对 plan 可视化的不满。测试模型对提问式 + 原因阐述的组合是否敏感"
+    },
+    {
+      "id": "syn-009",
+      "target_failure_mode": "FP_013",
+      "title": "提问式纠错：你看看这里是不是应该",
+      "conversation_snippet": "## Round 5\n**User**: 你看看 tasks 里这个拆分是不是应该把数据库迁移和接口改造分成两个独立任务，现在混在一起风险太高了\n\n**AI**: 你说得对，我把它们拆开...",
+      "expected_output": {
+        "process_issues": [
+          {"category": "spec4.tasks", "rationale": "用户以'是不是应该'句式指出 tasks 拆分粒度不合理，是对 spec4 产出的纠错"}
+        ],
+        "knowledge_gaps": []
+      },
+      "difficulty": "medium",
+      "rationale": "FP_013 变体：'你看看是不是应该'用于 spec4.tasks 领域。测试提问式纠错是否能跨 category 泛化识别"
+    },
+    {
+      "id": "syn-010",
+      "target_failure_mode": "FP_011",
+      "title": "短文档业务规则：幂等性要求",
+      "conversation_snippet": "## Round 1\n**User**: 帮我写个重试逻辑\n\n**AI**: 我来实现一个带指数退避的重试机制...\n\n## Round 2\n**User**: 注意这个接口不是幂等的，重试前要先查一下状态，已经成功了就不能重复调\n\n**AI**: 好的，我加上重试前的状态检查。",
+      "expected_output": {
+        "process_issues": [],
+        "knowledge_gaps": [
+          {"category": "业务规则", "rationale": "该接口非幂等、重试前需查状态避免重复调用是业务规则"}
+        ]
+      },
+      "difficulty": "medium",
+      "rationale": "FP_011 变体：短文档中用户补充非幂等约束。测试在操作指导型短对话中模型是否能提取业务规则 KG"
+    }
+  ]
+}

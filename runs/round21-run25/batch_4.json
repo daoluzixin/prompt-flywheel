@@ -1,0 +1,25 @@
+{
+  "batch_index": 4,
+  "process_issues": [
+    {
+      "contentId": "2758021373",
+      "category": "spec4.tasks",
+      "description": "spec4 tasks 产出中为 getForceBacklogTime 方法添加了不应存在的 cityId 参数",
+      "quote": "4_getForceBacklogTime为啥cityId添加"
+    },
+    {
+      "contentId": "syn-001",
+      "category": "spec5.impl",
+      "description": "AI 生成的上传脚本错误地添加了认证Token，实际CDN接口是内网的不需要认证",
+      "quote": "不用token，我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-001",
+      "category": "系统架构",
+      "description": "内部CDN接口为内网服务，直接POST即可，不需要任何认证头",
+      "quote": "我们CDN接口是内网的，直接POST就行，不需要任何认证头"
+    }
+  ]
+}

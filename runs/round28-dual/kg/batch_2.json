@@ -1,0 +1,47 @@
+{
+  "batch_index": 2,
+  "knowledge_gaps": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客校园送的服务品牌为4020、服务产品为103645，发单流程复用5001的服务包",
+      "quote": "记录上游传入的【企客校园送】服务品牌 = 4020、【企客校园送】服务产品= 103645，发单流程上复用5001的服务包"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "接口约束",
+      "description": "bizLineKey枚举值定义：BIZ-JISHIPEI(即时配)、BIZ-ENTERPRISE(企客)、BIZ-PAOTUI(跑腿)、BIZ-CITY-PROXY(城市代理)、BIZ-CAMPUS(校园)",
+      "quote": "bizLineKey枚举值 bizlineKey 说明 BIZ-JISHIPEI 即时配业务 BIZ-ENTERPRISE 企客业务（本次业务线） BIZ-PAOTUI 跑腿业务 BIZ-CITY-PROXY 城市代理业务 BIZ-CAMPUS 校园业务"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "数据模型",
+      "description": "企客公司id通过poi聚合根获取，对应字段路径为PoiView.BizPoiViewVo.BaseBo.CustomerId",
+      "quote": "poi聚合根获取企客公司id，对应字段：PoiView.BizPoiViewVo.BaseBo.CustomerId"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客销售总部可查企客业务线全部订单，其他销售员工通过levelType区分岗位，仅可查询负责公司的订单（userId→公司id→单）",
+      "quote": "企客销售总部：可查企客业务线全部订单信息 其他销售员工（包含一线销售、销售区域）仅可查询负责公司的订单（userId->公司id->单）"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客单的判定条件为bizLineKey=\"BIZ-ENTERPRISE\"，校园单的判定条件为物流单lnt=1",
+      "quote": "企客单：企客侧本次新增的 bizLineKey = \"BIZ-ENTERPRISE\" 校园单：物流单lnt=1"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "校园订单列表查询需先校验是否存在【企客销售订单详情查询】权限角色，存在则走新查询逻辑，不存在则走原校园渠道角色校验逻辑",
+      "quote": "校验是否存在本次新增的权限角色【企客销售订单详情查询】，若存在走本次新查询逻辑；若不存在本次新增角色，则走原校园渠道角色校验逻辑"
+    },
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "接口约束",
+      "description": "知识库文档上传后端接口无需任何鉴权信息，可直接上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传，没没问题，删除鉴权相关的就好了"
+    }
+  ]
+}

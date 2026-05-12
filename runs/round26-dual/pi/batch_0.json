@@ -1,0 +1,59 @@
+{
+  "batch_index": 0,
+  "process_issues": [
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 新版本模板删掉了旧版本已有的结构体、配置中心配置、message 等信息",
+      "quote": "但是我发现新版本却删掉了，你来调整一下，把这些信息放到新版本里面"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 前端缺少对新增结构（messages, structures, lion_configs, link_state）的解析样式和逻辑",
+      "quote": "前端解析逻辑也需要加上对应样式和逻辑"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec4.tasks",
+      "description": "用户指出 spec4 脚本获取编码规范范围有误，应按能力维度获取对应服务规范而非获取 outline 全部服务",
+      "quote": "这样是不是直接获取了outline_file的所有服务的规范啊，其实应该给出每个能力下面的所有服务的规范，其他能力的服务不需要"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户认为 plan 模板内容过多，要求在信息不丢失的前提下精简模板",
+      "quote": "这个内容有点太多了，我知道信息确实需要这么多，但是你能不能做到在保证信息不丢失的情况下，尽可能的精简这个模版的内容呢"
+    },
+    {
+      "contentId": "1c1bae3d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户建议将 messages、structures、lion_configs、link_state 放到 wf_xxx 内部以提升可视化和 AI 友好性",
+      "quote": "这几项能不能放到wf_xxx里面呢，我觉得这样对用户的可视化还有AI的友好性有更好的效果"
+    },
+    {
+      "contentId": "3bbf3b4d-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 前端缺少对 extensions 扩展位的展示支持",
+      "quote": "我需要你在plan的前端里面能展示出来"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "用户反复指出 AI 生成的前端图例代码无法正常显示，多次修复仍未解决",
+      "quote": "还是不显示，你到底改的是什么地方啊，一开始 还能显示呢"
+    },
+    {
+      "contentId": "78e884b3-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 AI 生成的图例代码定位位置错误，显示在左下角而非流程图框右下侧",
+      "quote": "现在图例在左下角显示了，我要的是流程图框的右下侧"
+    },
+    {
+      "contentId": "63b4d6c5-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 spec5 执行拉取服务时遗漏了部分服务，实际应为九个服务",
+      "quote": "不是九个服务吗"
+    }
+  ]
+}

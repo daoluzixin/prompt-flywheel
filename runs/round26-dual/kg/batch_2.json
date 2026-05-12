@@ -1,0 +1,11 @@
+{
+  "batch_index": 2,
+  "knowledge_gaps": [
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "系统架构",
+      "description": "知识库文档上传后端接口无需任何鉴权信息，可直接上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传"
+    }
+  ]
+}

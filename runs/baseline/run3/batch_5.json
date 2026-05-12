@@ -1,0 +1,55 @@
+{
+  "batch_index": 5,
+  "process_issues": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "spec5.impl",
+      "description": "AI生成的代码将DB持久化逻辑直接写在流程主干上，结构冗长，用户要求抽取为独立方法",
+      "quote": "这个位置的改动抽一个单独的方法，写在流程主干上太冗长"
+    },
+    {
+      "contentId": "be99243f-catpaw",
+      "category": "spec1.spy",
+      "description": "AI生成的spec文档中多处描述不准确，用户通过11条划线评论批量纠正（如通信方式错误、服务职责错误等）",
+      "quote": "/spec-mark 对标记的内容进行修正"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "业务规则",
+      "description": "订单号获取优先级规则：优先通过getExternalOrderId获取，无值时取packageView.externalOrderId",
+      "quote": "关于订单号，如果是平台配送，则直接从packageView中取externalOrderId。但是如果是ost有值的订单，则通过getExternalOrderId方法获取订单号，优先级上先判断getExternalOrderId是否有值，没有值的话取packageView.externalOrderId"
+    },
+    {
+      "contentId": "f39aa58c-catpaw",
+      "category": "数据模型",
+      "description": "平台配送链路的ugcupactid字段位置在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中",
+      "quote": "平台配送链路的ugcupactid在orderExtView.getOrderSnapshot().getUseGovernmentCouponActivityId中"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES索引中company_customer_id字段需新增，当前不存在",
+      "quote": "ES字段是要新写的，字段名是company_customer_id"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "技术栈",
+      "description": "配置中心配置项config_key_delivery_type_switch生产环境值为1",
+      "quote": "config_key_delivery_type_switch值是1"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "数据模型",
+      "description": "ES索引中biz_line_key字段当前不存在，需新增",
+      "quote": "biz_line_key当前索引中也没有，需要新增"
+    },
+    {
+      "contentId": "2757704387-catpaw",
+      "category": "系统架构",
+      "description": "AuthVerifyIface通过proxy方式注入",
+      "quote": "通过proxy注入即可"
+    }
+  ]
+}

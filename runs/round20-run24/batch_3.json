@@ -1,0 +1,31 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "2757845649",
+      "category": "spec1.spy",
+      "description": "用户对 spec1-spec4 全部产出不满意，要求删除所有内容重新执行",
+      "quote": "删除之前的spec1到 4 所有 理解重新理解"
+    },
+    {
+      "contentId": "2757865644",
+      "category": "spec5.impl",
+      "description": "AI 在代码梳理阶段遗漏了 service_xxx_query_server 服务的改动点",
+      "quote": "service_xxx_query_server你梳理遗漏了，现在需要你梳理一下改动点，并直接生成代码"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "2757865644",
+      "category": "技术栈",
+      "description": "query_render_service 服务需要升级 xxx.common 包版本，存在服务间包版本依赖关系",
+      "quote": "query_render_service服务里没有升级xxx.common包版本"
+    },
+    {
+      "contentId": "2757991421",
+      "category": "接口约束",
+      "description": "订单来源枚举值定义：全部=-1，平台A=1，平台B=100",
+      "quote": "订单来源枚举值：全部 = -1 平台A = 1 平台B = 100"
+    }
+  ]
+}

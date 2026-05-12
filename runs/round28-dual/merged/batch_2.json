@@ -1,0 +1,79 @@
+{
+  "batch_index": 2,
+  "process_issues": [
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板字段引导方式不合理，各字段未明确告诉 AI 该思考什么、填入什么",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 模板中关键约束信息放置位置过晚，应在流程前期就明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "用户指出 plan 流程遗漏了 jar 包读取和配置中心配置读取的工具引导",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户指出 spec5 前置脚本 common.sh 路径解析逻辑有 bug 导致执行报错，要求修复",
+      "quote": "你先修复一下脚本吧，保证脚本后面执行都不出错"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "spec5.impl",
+      "description": "用户对 spec5 脚本的 repo 目录解析设计提出改进建议，应由 AI 显式传入 git 目录",
+      "quote": "我觉得可以这样，就是让AI输入git目录就好了啊"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客校园送的服务品牌为4020、服务产品为103645，发单流程复用5001的服务包",
+      "quote": "记录上游传入的【企客校园送】服务品牌 = 4020、【企客校园送】服务产品= 103645，发单流程上复用5001的服务包"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "接口约束",
+      "description": "bizLineKey枚举值定义：BIZ-JISHIPEI(即时配)、BIZ-ENTERPRISE(企客)、BIZ-PAOTUI(跑腿)、BIZ-CITY-PROXY(城市代理)、BIZ-CAMPUS(校园)",
+      "quote": "bizLineKey枚举值 bizlineKey 说明 BIZ-JISHIPEI 即时配业务 BIZ-ENTERPRISE 企客业务（本次业务线） BIZ-PAOTUI 跑腿业务 BIZ-CITY-PROXY 城市代理业务 BIZ-CAMPUS 校园业务"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "数据模型",
+      "description": "企客公司id通过poi聚合根获取，对应字段路径为PoiView.BizPoiViewVo.BaseBo.CustomerId",
+      "quote": "poi聚合根获取企客公司id，对应字段：PoiView.BizPoiViewVo.BaseBo.CustomerId"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客销售总部可查企客业务线全部订单，其他销售员工通过levelType区分岗位，仅可查询负责公司的订单（userId→公司id→单）",
+      "quote": "企客销售总部：可查企客业务线全部订单信息 其他销售员工（包含一线销售、销售区域）仅可查询负责公司的订单（userId->公司id->单）"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "企客单的判定条件为bizLineKey=\"BIZ-ENTERPRISE\"，校园单的判定条件为物流单lnt=1",
+      "quote": "企客单：企客侧本次新增的 bizLineKey = \"BIZ-ENTERPRISE\" 校园单：物流单lnt=1"
+    },
+    {
+      "contentId": "b0419fc0-catpaw",
+      "category": "业务规则",
+      "description": "校园订单列表查询需先校验是否存在【企客销售订单详情查询】权限角色，存在则走新查询逻辑，不存在则走原校园渠道角色校验逻辑",
+      "quote": "校验是否存在本次新增的权限角色【企客销售订单详情查询】，若存在走本次新查询逻辑；若不存在本次新增角色，则走原校园渠道角色校验逻辑"
+    },
+    {
+      "contentId": "734b79d3-catpaw",
+      "category": "接口约束",
+      "description": "知识库文档上传后端接口无需任何鉴权信息，可直接上传",
+      "quote": "这里上传不需要做任何鉴权信息，我们后端接口随意上传，没没问题，删除鉴权相关的就好了"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "batch_index": 3,
+  "process_issues": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "spec3.plan",
+      "description": "plan和tasks拆分为独立文件后，check-prerequisites校验方式未同步更新",
+      "quote": "因为我们的plan还有tasks拆分开了，所以plan还有tasks校验方式也应该变化一下吧"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan模板引导不足，AI只填充note字段而忽略接口、异常、降级、决策等其他字段",
+      "quote": "你这样写不太好，因为现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧，现在是note非常详细，所以note很多内容，但是其他的都没有怎么思考"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan流程中关键约束信息应前置到DESIGN章节开头，而非延迟到第二步才明确",
+      "quote": "这个应该在前面就告诉AI，不应该到了第二才明确，可以在前面的时候就明确出来"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "spec3.plan",
+      "description": "plan流程中遗漏了jar包读取和配置中心配置读取步骤",
+      "quote": "忘记了jar包读取还有 配置中心配置读取，在流程里面也应该体现一下，你在流程里面补充一下吧"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "1ef84a84-catpaw",
+      "category": "系统架构",
+      "description": "spec-mark知识点收集维度应按服务维度组织，而非按接口维度",
+      "quote": "这里需要收集知识点， 那这个知识点不是以接口维度了，就是按照服务维度"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "系统架构",
+      "description": "plan模板包含接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息等多个字段，各字段有独立的填充职责",
+      "quote": "现在我们有 接口、异常、降级、配置中心配置、链路流转、备注、决策、实体类、消息这么多点，你需要给AI明确，应该考虑什么，填入什么对吧"
+    },
+    {
+      "contentId": "fadb2be3-catpaw",
+      "category": "业务规则",
+      "description": "异常处理中redo为异步操作保证最终一致性，retry为同步重试失败则流程失败",
+      "quote": "redo就是异步操作，最终一致，retry就是同步尝试，尝试几次失败整个流程就失败"
+    },
+    {
+      "contentId": "cda1bacd-catpaw",
+      "category": "系统架构",
+      "description": "km-upload.sh的实际功能是脱敏后本地收集对话，而非上传到知识库",
+      "quote": "这个不是上传到知识库，这个是脱敏后收集"
+    }
+  ]
+}

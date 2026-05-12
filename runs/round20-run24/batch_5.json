@@ -1,0 +1,67 @@
+{
+  "batch_index": 5,
+  "process_issues": [
+    {
+      "contentId": "syn-005",
+      "category": "spec1.spy",
+      "description": "spec.md 对消息中间件的说明不完整，缺少 dead letter topic 的描述",
+      "quote": "缺了...还有个 dead letter topic"
+    },
+    {
+      "contentId": "syn-006",
+      "category": "spec2.clarify",
+      "description": "outline 中 payment 路由错误地依赖了 inventory 服务，用户指出该依赖不应存在",
+      "quote": "outline 里 payment 路由不应该调 inventory 服务"
+    },
+    {
+      "contentId": "syn-007",
+      "category": "spec3.plan",
+      "description": "用户认为 plan 模板字段过多过复杂，导致 AI 填写时无法有效处理信息",
+      "quote": "这个 plan 模板你看看能不能简洁点，每次让 AI 填的时候信息太多它都不知道该怎么处理了"
+    },
+    {
+      "contentId": "syn-008",
+      "category": "spec3.plan",
+      "description": "plan 中数据流图的可视化布局混乱，箭头交叉导致调用关系难以辨识",
+      "quote": "这个数据流图可不可以换种方式画，现在这样看起来太乱了，箭头交叉太多根本看不清调用关系"
+    },
+    {
+      "contentId": "syn-009",
+      "category": "spec4.tasks",
+      "description": "spec4 任务拆分粒度不合理，数据库迁移和接口改造混在同一任务中风险过高",
+      "quote": "你看看 tasks 里这个拆分是不是应该把数据库迁移和接口改造分成两个独立任务，现在混在一起风险太高了"
+    }
+  ],
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-002",
+      "category": "接口约束",
+      "description": "batchQueryOrderStatus 接口单次查询上限为100个，超过需自行分片",
+      "quote": "注意一次最多100个，超过要自己分片"
+    },
+    {
+      "contentId": "syn-003",
+      "category": "技术栈",
+      "description": "ConfigCenter 配置中心只支持读取，写入需通过管理后台审批流程操作，代码中只做读取和缓存",
+      "quote": "ConfigCenter只能读不能写，写入要走审批流程在管理后台操作，代码里只做读取和缓存"
+    },
+    {
+      "contentId": "syn-005",
+      "category": "系统架构",
+      "description": "消息队列除主 topic(order_notify) 外还存在 dead letter topic",
+      "quote": "还有个 dead letter topic"
+    },
+    {
+      "contentId": "syn-006",
+      "category": "系统架构",
+      "description": "payment 路由不应依赖 inventory 服务，两者之间无调用关系",
+      "quote": "outline 里 payment 路由不应该调 inventory 服务"
+    },
+    {
+      "contentId": "syn-010",
+      "category": "接口约束",
+      "description": "目标接口非幂等，重试前必须先查询状态确认未成功才可重复调用",
+      "quote": "注意这个接口不是幂等的，重试前要先查一下状态，已经成功了就不能重复调"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "batch_index": 4,
+  "knowledge_gaps": [
+    {
+      "contentId": "syn-003",
+      "category": "技术栈",
+      "description": "ConfigCenter 配置中心在代码中只能读取和缓存，写入需走审批流程在管理后台操作",
+      "quote": "ConfigCenter只能读不能写，写入要走审批流程在管理后台操作，代码里只做读取和缓存"
+    },
+    {
+      "contentId": "syn-005",
+      "category": "系统架构",
+      "description": "消息中间件除主 topic 外还配置了 dead letter topic",
+      "quote": "还有个 dead letter topic"
+    },
+    {
+      "contentId": "syn-006",
+      "category": "系统架构",
+      "description": "payment 路由不应调用 inventory 服务，两者之间无依赖关系",
+      "quote": "outline 里 payment 路由不应该调 inventory 服务"
+    }
+  ]
+}
